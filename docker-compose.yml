@@ -1,0 +1,30 @@
+version: '2'
+services:
+  php:
+    build: ./images/php
+    links:
+      - pgsql
+    container_name: php-common
+    volumes:
+      - ./www:/var/www
+  nginx:
+    container_name: nginx-common
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./hosts:/etc/nginx/conf.d:ro
+      - ./www:/var/www
+      - ./logs:/var/log/nginx
+    links:
+      - php
+  pgsql:
+      container_name: postgresql-cms
+      image: postgres:9.6.3
+      ports:
+        - "5432:5432"
+      environment:
+        - POSTGRES_USER=user
+        - POSTGRES_DB=cms
+        - DB_PASS=qwerty
