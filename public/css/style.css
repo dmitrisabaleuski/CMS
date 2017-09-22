@@ -1,3 +1,27 @@
-.add-post,.content>div{border: 1px solid #000;float: left}
+.add-post,.admin-content,.content>div{border: 1px solid #000;float: left}
 div.header, div.content, div.footer{padding: 10px;float: left}
 div h1{margin-bottom: 0;}
+.admin-content>ul{
+    width:100%;
+    margin-bottom: 0;
+    padding-left: 0px;
+}
+.admin-content>ul>li>.post-admin>ul,.admin-content>ul>li>.post-admin>ul>li{
+    float: left;
+}
+.admin-content>ul>li>{border: 1px solid}
+.admin-content>ul>li>.post-admin>ul>li{border: 1px solid}
+.post-atribut{float: left;padding: 5px;}
+.post-admin,.admin-content>ul>li>ul{float: left;}
+.admin-content>ul>li>ul>li{
+    float: left;
+    padding: 2px;
+    border:1px solid;
+}
+ul{list-style-type: none;}
+.admin-content>ul>li{border-bottom: 1px solid;display: flex;}
+.admin-content>ul>li:last-child{border:none;}
+.post-admin{padding-left: 0px !important;}
+.post-admin>div{float: left;}
+.admin-content{border:none;}
+.admin-content>ul>li>ul{display: flex; align-items: center;}
