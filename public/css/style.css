@@ -1,0 +1,3 @@
+.add-post,.content>div{border: 1px solid #000;float: left}
+div.header, div.content, div.footer{padding: 10px;float: left}
+div h1{margin-bottom: 0;}
