@@ -29,3 +29,4 @@ Route::get('page/edit/{id}','EditController@edit')->name('editShow');
 Route::post('page/edit/{id}','EditController@update')->name('postUpdate');
 
 Route::get('/admin','AdminController@admin');
+

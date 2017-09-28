@@ -1,5 +1,7 @@
 <?php
 
+use App\Post;
+use App\User;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -37,10 +39,28 @@ class CMSDB extends Migration
             $table->string('name');
             $table->string('author');
             $table->dateTime('date');
+            $table->string('description');
             $table->string('content');
             $table->string('title');
             $table->timestamps();
         });
+        $faker = Faker\Factory::create();
+        for ($i=0; $i < 10; $i++) {
+            ((new Post)->fill([
+                'name'=>$faker->name,
+                'author'=>'admin',
+                'description'=>$faker->text($maxNbChars = 50),
+                'content'=>$faker->text($maxNbChars = 200),
+                'title'=>$faker->name,
+            ])->save());
+
+        }
+        ((new User)->fill([
+            'name'=>'SuperAdmin',
+            'email'=>'superadmin@gmail.com',
+            'password'=>'827ccb0eea8a706c4c34a16891f84e7b',
+
+        ])->save());
     }
 
     /**

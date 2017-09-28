@@ -1,4 +1,4 @@
-@extends('layouts.site')
+@extends('layouts.add')
 @section('content')
     <div class="jumbotron">
         <div class="container">
@@ -15,6 +15,10 @@
                     <div class="form-group">
                         <label for="shortDisc">Автор поста</label>
                         <textarea type="text" class="form-control" id="shortDisc" name="author"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="foolCont">Краткий текст</label>
+                        <textarea type="text" class="form-control" id="foolCont" name="shortcont"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="foolCont">Полный текст</label>

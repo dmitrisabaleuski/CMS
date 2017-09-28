@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\DB; ?>
     <h3>
         Панель Администратора
     </h3>
-    <p><a href="/">Back to main Page</a></p>
+    <p><a class="btn btn-default edpost" href="/">Back to main Page</a></p>
 </div>
 @if(count($errors)>0)
     <div class="alert alert-danger">

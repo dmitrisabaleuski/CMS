@@ -1,8 +1,9 @@
-@extends('layouts.site')
+@extends('layouts.update')
 @section('content')
     <div class="jumbotron">
         <div class="container">
             @if($post)
+                <p><a class="btn btn-default backpost" href="{{route('articleShow',['id'=>$post->id])}}">Back to post</a></p>
                 <div class="form">
                     <form method="POST" action="{{route('postUpdate',['post'=>$post->id])}}">
                         <div class="form-group">
@@ -18,12 +19,17 @@
                             <textarea type="text" class="form-control" id="shortDisc" name="author">{{$post->author}}</textarea>
                         </div>
                         <div class="form-group">
+                            <label for="foolCont">Краткий текст</label>
+                            <textarea type="text" class="form-control" id="foolCont" name="shortcont">{{$post->description}}</textarea>
+                        </div>
+                        <div class="form-group">
                             <label for="foolCont">Полный текст</label>
                             <textarea type="text" class="form-control" id="foolCont" name="content">{{$post->content}}</textarea>
                         </div>
                         <button type="submit" class="btn btn-default">Отправить</button>
                         {{csrf_field()}}
                     </form>
+
                 </div>
             @endif
         </div>

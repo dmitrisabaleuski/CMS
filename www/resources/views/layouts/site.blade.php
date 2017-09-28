@@ -4,16 +4,22 @@ use Illuminate\Support\Facades\DB; ?>
 <html>
 <head>
     <meta charset="utf8">
-    <title>Test Page</title>
+    <title>Main Page</title>
     <link rel="stylesheet" href="{{ URL::asset('css/style.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('/boot/css/bootstrap.min.css')}}">
 </head>
 <body>
-<div class="col-xl-12 col-md-12 col-sm-12 header">
+<div class="col-xl-6 col-md-6 col-sm-12 header">
     <h1>
-        {{$header}}
+        Главная страница
     </h1>
-    <p><a href="/{{$admin}}">{{$admin_name}}</a></p>
+    <p><a class="btn btn-default edpost" href="/admin">Панель администратора</a></p>
+</div>
+<div class="col-xl-6 col-md-6 col-sm-12 auth">
+    <h5>
+        <a href="/">Авторизуйтесь</a> или <a href="">зарегестрируйтесь</a>
+    </h5>
+    
 </div>
 @if(count($errors)>0)
     <div class="alert alert-danger">
@@ -28,7 +34,7 @@ use Illuminate\Support\Facades\DB; ?>
 
 <div class="col-xl-12 col-md-12 col-sm-12 footer">
     <h1>
-        {{$footer}}
+        Макет футера
     </h1>
 </div>
 </body>

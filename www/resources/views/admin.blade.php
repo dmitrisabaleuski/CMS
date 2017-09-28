@@ -1,4 +1,4 @@
-@extends('layouts.site')
+@extends('layouts.adminpage')
 @section('content')
     <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12 admin-content">
         <ul>
@@ -12,10 +12,13 @@
                         <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
                             <p> Содержание: <b> {{$posts->content}}</b></p>
                         </div>
+                        <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
+                            <p> Краткое содержание: <b> {{$posts->description}}</b></p>
+                        </div>
                     </div>
                     <ul>
-                        <li><a class="btn btn-default" role="buttom" href="{{route('editShow',['id'=>$posts->id])}}">Редактировать</a></li>
-                        <li><a class="btn btn-default" role="buttom" href="{{route('articleShow',['id'=>$posts->id])}}">Просмотреть</a></li>
+                        <li><a class="btn btn-default edpost" role="buttom" href="{{route('editShow',['id'=>$posts->id])}}">Редактировать</a></li>
+                        <li><a class="btn btn-default main" role="buttom" href="{{route('articleShow',['id'=>$posts->id])}}">Просмотреть</a></li>
                         <li>
                             <form action="{{route('postDelete',['post'=>$posts->id])}}" method="POST">
                                 <input type="hidden" name="_method" value="DELETE">

@@ -1,5 +1,19 @@
 .add-post,.admin-content,.content>div{border: 1px solid #000;float: left}
-div.header, div.content, div.footer{padding: 10px;float: left}
+.content>div{
+    margin-right: 1%;
+    padding-bottom: 1%;
+    text-align: center;
+    margin-bottom: 1%;
+    min-height: 250px;
+}
+.content>div:nth-child(n6){
+    margin-right: 0%;
+}
+div.header, div.footer{padding: 10px;float: left}
+div.content{
+    float: left;
+    padding: 10px 25px 10px 25px;
+}
 div h1{margin-bottom: 0;}
 .admin-content>ul{
     width:100%;
@@ -25,3 +39,32 @@ ul{list-style-type: none;}
 .post-admin>div{float: left;}
 .admin-content{border:none;}
 .admin-content>ul>li>ul{display: flex; align-items: center;}
+.main:hover{
+    transform: 1.5s;
+    background: #880000;
+    color:#fff;
+}
+a.edpost:hover{
+    transform: 1.5s;
+    background: #ffa500;
+    color:#000;
+}
+button{cursor: pointer;}
+button:hover{
+    transform: 1.5s;
+    padding-left:2%;
+    padding-right: 2%;
+}
+.backpost{
+    background: red;
+    color: #fff;
+}
+.backpost:hover{
+    transform: 1.5s;
+    background: #ffa500;
+    color:#000;
+}
+.auth{
+    float: left;
+    text-align: right;
+}
