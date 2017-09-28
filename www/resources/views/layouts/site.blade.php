@@ -1,5 +1,7 @@
 <?php
-use Illuminate\Support\Facades\DB; ?>
+use Illuminate\Support\Facades\DB;
+use App\User;
+?>
         <!doctype html>
 <html>
 <head>
@@ -16,10 +18,34 @@ use Illuminate\Support\Facades\DB; ?>
     <p><a class="btn btn-default edpost" href="/admin">Панель администратора</a></p>
 </div>
 <div class="col-xl-6 col-md-6 col-sm-12 auth">
-    <h5>
-        <a href="/">Авторизуйтесь</a> или <a href="">зарегестрируйтесь</a>
-    </h5>
-    
+    <ul class="nav navbar-nav navbar-right">
+        <!-- Authentication Links -->
+        @guest
+            <li><a href="{{ route('login') }}">Login</a></li>
+            <li><a href="{{ route('register') }}">Register</a></li>
+            @else
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+        @endguest
+    </ul>
+
 </div>
 @if(count($errors)>0)
     <div class="alert alert-danger">
@@ -37,5 +63,6 @@ use Illuminate\Support\Facades\DB; ?>
         Макет футера
     </h1>
 </div>
+<script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
