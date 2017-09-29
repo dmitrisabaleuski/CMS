@@ -15,7 +15,10 @@ use App\User;
     <h1>
         Главная страница
     </h1>
-    <p><a class="btn btn-default edpost" href="/admin">Панель администратора</a></p>
+
+        <p><a class="btn btn-default edpost" href="/admin">Панель администратора</a></p>
+
+
 </div>
 <div class="col-xl-6 col-md-6 col-sm-12 auth">
     <ul class="nav navbar-nav navbar-right">

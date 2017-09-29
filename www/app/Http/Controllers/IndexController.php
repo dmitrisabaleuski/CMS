@@ -8,7 +8,7 @@ class IndexController extends Controller
 {
     public function  index(){
 
-        $post = (new Post)->select(['id','name','author','description'])->get();
+        $post = (new Post)->select(['id','name','author','description'])->paginate(5);
         return view('page')->with(['post'=>$post]);
 }
 
