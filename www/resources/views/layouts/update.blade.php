@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\DB; ?>
             панель редактирвания поста
         </h3>
         <p><a class="btn btn-default edpost" href="/">Back to main Page</a></p>
+        @role('admin')
+        <p><a class="btn btn-default edpost" href="/admin">Панель администратора</a></p>
+        @endrole
     </div>
     <div class="col-xl-6 col-md-6 col-sm-12 admin-auth">
     <ul class="nav navbar-nav navbar-right">
