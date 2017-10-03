@@ -1,23 +1,20 @@
 <?php
-use Illuminate\Support\Facades\DB;
-use App\User;?>
+use Illuminate\Support\Facades\DB; ?>
         <!doctype html>
 <html>
 <head>
     <meta charset="utf8">
     <title>Admin Panel</title>
     <link rel="stylesheet" href="{{ URL::asset('css/style.css')}}">
-    <link rel="stylesheet" href="{{ URL::asset('css/tabs.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('/boot/css/bootstrap.min.css')}}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 </head>
 <body>
 <div class="col-xl-12 col-md-12 col-sm-12 header">
     <div class="col-xl-6 col-md-6 col-sm-12 admin-all">
         <h3>
-            Панель Администратора
+            Панель редактирвания пользователя
         </h3>
-        <p><a class="btn btn-default edpost" href="/">Back to main Page</a></p>
+        <p><a class="btn btn-default edpost" href="/admin">Back to admin panel</a></p>
     </div>
     <div class="col-xl-6 col-md-6 col-sm-12 admin-auth">
         <ul class="nav navbar-nav navbar-right">
@@ -49,7 +46,7 @@ use App\User;?>
                             </ul>
                         </li>
                     </ul>
-            @endguest
+                    @endguest
         </ul>
     </div>
 </div>
@@ -63,28 +60,13 @@ use App\User;?>
         </ul>
     </div>
 @endif
-<div class="tabs">
-    <!-- Это сами вкладки -->
-    <ul class="tabNavigation">
-        <li><a class="" href="#content">Статьи</a></li>
-        <li><a class="" href="#users">Пользователи</a></li>
-    </ul>
-    <!-- Это контейнеры содержимого -->
-    <div id="content" class="tabs-content">
-        @yield('content')
-    </div>
-    <div id="users" class="tabs-content">
-        @yield('users')
-    </div>
-</div>
-
+@yield('content')
 
 <div class="col-xl-12 col-md-12 col-sm-12 footer">
     <h3>
         Макет футера
     </h3>
 </div>
-<script src="{{ asset('js/tabs.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

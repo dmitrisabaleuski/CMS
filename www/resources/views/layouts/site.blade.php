@@ -9,14 +9,17 @@ use App\User;
     <title>Main Page</title>
     <link rel="stylesheet" href="{{ URL::asset('css/style.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('/boot/css/bootstrap.min.css')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 </head>
 <body>
 <div class="col-xl-6 col-md-6 col-sm-12 header">
     <h1>
         Главная страница
     </h1>
+    @role('admin')
+    <p><a class="btn btn-default edpost" href="/admin">Панель администратора</a></p>
+    @endrole
 
-        <p><a class="btn btn-default edpost" href="/admin">Панель администратора</a></p>
 
 
 </div>

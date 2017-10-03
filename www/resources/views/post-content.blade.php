@@ -9,6 +9,9 @@
                 </h1>
                 <p>{{$post->content}}</p>
                 <p>Автор {{$post->author}}</p>
+                @role('admin')
+                <p><a class="btn btn-default edpost" role="buttom" href="{{route('editShow',['id'=>$post->id])}}">Редактировать</a></p>
+                @endrole
             </div>
     @endif
     </div>

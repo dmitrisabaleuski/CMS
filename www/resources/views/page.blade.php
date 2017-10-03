@@ -10,7 +10,9 @@
                     <p>{{$posts->description}}</p>
                     <p>Автор {{$posts->author}}</p>
                     <p><a class="btn btn-default main" role="buttom" href="{{route('articleShow',['id'=>$posts->id])}}">Подробнее</a></p>
-
+                    @role('admin')
+                    <p><a class="btn btn-default edpost" role="buttom" href="{{route('editShow',['id'=>$posts->id])}}">Редактировать</a></p>
+                    @endrole
                 </div>
             @endforeach
                 <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12 pagin">
@@ -19,8 +21,5 @@
         @else
             <p>На данный момент, постов нет!</p>
         @endif
-</div>
-<div class="add-post col-xl-12 col-md-12 col-sm-12 col-xs-12">
-    <p><a href="/page/add">Добавить пост</a></p>
 </div>
 @endsection

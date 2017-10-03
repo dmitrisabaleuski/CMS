@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
+use App\User;
 class CreateUsersTable extends Migration
 {
     /**
@@ -21,6 +21,11 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        ((new User)->fill([
+            'name'=>'Administrator',
+            'email'=>'dmitrisabaleuski@gmail.com',
+            'password'=>'$2y$10$dsbsizRB3X0SvLUPK.ZLiOolMNYTwhBc/dqe16bHUTfd98VkVNS7S',
+        ])->save());
     }
 
     /**
