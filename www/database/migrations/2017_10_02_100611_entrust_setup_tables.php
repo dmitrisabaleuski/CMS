@@ -57,21 +57,28 @@ class EntrustSetupTables extends Migration
             $table->primary(['permission_id', 'role_id']);
         });
         $owner = new Role();
-        $owner->name = 'owner';
-        $owner->display_name = 'Project Owner'; // optional
+        $owner->name = 'User';
+        $owner->display_name = 'User'; // optional
         $owner->description  = 'User is the owner of a given project'; // optional
         $owner->save();
 
+        $SuperAdmin = new Role();
+        $SuperAdmin->name         = 'SuperAdmin';
+        $SuperAdmin->display_name = 'SuperAdministrator'; // optional
+        $SuperAdmin->description  = 'User is allowed to manage and edit other users'; // optional
+        $SuperAdmin->save();
+
         $admin = new Role();
-        $admin->name         = 'admin';
-        $admin->display_name = 'Administrator'; // optional
+        $admin->name         = 'Admin';
+        $admin->display_name = 'Admin'; // optional
         $admin->description  = 'User is allowed to manage and edit other users'; // optional
         $admin->save();
 
-        $user = (new User)->where('name', '=', 'Administrator')->first();
+        $SuperAdmin1 = (new User)->where('name', '=', 'SuperAdministrator')->first();
 
         // role attach alias
-        $user->attachRole($admin); // parameter can be an Role object, array, or id
+        $SuperAdmin1->attachRole($SuperAdmin1); // parameter can be an Role object, array, or id
+
 
         $createPost = new Permission();
         $createPost->name         = 'create-post';

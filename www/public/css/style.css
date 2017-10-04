@@ -53,8 +53,6 @@ a.edpost:hover{
 button{cursor: pointer;}
 button:hover{
     transform: 1.5s;
-    padding-left:2%;
-    padding-right: 2%;
 }
 .backpost{
     background: red;
@@ -137,3 +135,10 @@ button:hover{
 .pagin>ul>li{
     font-size: 25px;
 }
+.single-user>li:nth-child(1n){width: 9%;}
+.single-user>li:nth-child(2n){width: 22%;}
+.single-user>li:nth-child(3n){width: 30%;}
+.single-user>li:nth-child(4n){width: 30%;}
+.single-user>li:nth-child(5n){width: 30%;}
+
+.admin-users>ul{padding-left: 0;}

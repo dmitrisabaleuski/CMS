@@ -41,7 +41,8 @@ Route::get('admin/edit/{id}','UserEditController@edit')->name('usereditShow');
 Route::post('admin/edit/{id}','UserEditController@update')->name('userpostUpdate');
 
 Route::get('/admin','AdminController@admin');
-
+Route::get('/admin-content','AdminController@content');
+Route::get('/admin-user','AdminController@users');
 
 Auth::routes();
 

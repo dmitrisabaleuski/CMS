@@ -16,7 +16,7 @@ use App\User;
     <h1>
         Главная страница
     </h1>
-    @role('admin')
+    @role('SuperAdmin','Admin')
     <p><a class="btn btn-default edpost" href="/admin">Панель администратора</a></p>
     @endrole
 

@@ -48,7 +48,7 @@ class CMSDB extends Migration
         for ($i=0; $i < 10; $i++) {
             ((new Post)->fill([
                 'name'=>$faker->name,
-                'author'=>'admin',
+                'author'=>'SuperAdmin',
                 'description'=>$faker->text($maxNbChars = 50),
                 'content'=>$faker->text($maxNbChars = 200),
                 'title'=>$faker->name,

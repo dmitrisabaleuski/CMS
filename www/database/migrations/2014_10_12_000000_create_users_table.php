@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
         ((new User)->fill([
-            'name'=>'Administrator',
+            'name'=>'SuperAdministrator',
             'email'=>'dmitrisabaleuski@gmail.com',
             'password'=>'$2y$10$dsbsizRB3X0SvLUPK.ZLiOolMNYTwhBc/dqe16bHUTfd98VkVNS7S',
         ])->save());

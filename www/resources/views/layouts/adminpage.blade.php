@@ -1,7 +1,8 @@
 <?php
 use Illuminate\Support\Facades\DB;
-use App\User;?>
-        <!doctype html>
+use App\User;
+?>
+<!doctype html>
 <html>
 <head>
     <meta charset="utf8">
@@ -66,25 +67,22 @@ use App\User;?>
 <div class="tabs">
     <!-- Это сами вкладки -->
     <ul class="tabNavigation">
-        <li><a class="" href="#content">Статьи</a></li>
-        <li><a class="" href="#users">Пользователи</a></li>
+        <li><a class="" href="/admin-content">Статьи</a></li>
+        @role('SuperAdmin')
+            <li><a class="" href="/admin-user">Пользователи</a></li>
+        @endrole
     </ul>
     <!-- Это контейнеры содержимого -->
     <div id="content" class="tabs-content">
         @yield('content')
     </div>
-    <div id="users" class="tabs-content">
-        @yield('users')
-    </div>
 </div>
-
-
 <div class="col-xl-12 col-md-12 col-sm-12 footer">
     <h3>
         Макет футера
     </h3>
 </div>
-<script src="{{ asset('js/tabs.js') }}"></script>
+
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
