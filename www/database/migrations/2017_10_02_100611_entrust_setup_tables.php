@@ -71,7 +71,7 @@ class EntrustSetupTables extends Migration
         $admin = new Role();
         $admin->name         = 'Admin';
         $admin->display_name = 'Admin'; // optional
-        $admin->description  = 'User is allowed to manage and edit other users'; // optional
+        $admin->description  = 'User is allowed to manage and edit posts'; // optional
         $admin->save();
 
         $SuperAdmin1 = (new User)->where('name', '=', 'SuperAdministrator')->first();
