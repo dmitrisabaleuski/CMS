@@ -142,3 +142,25 @@ button:hover{
 .single-user>li:nth-child(5n){width: 30%;}
 
 .admin-users>ul{padding-left: 0;}
+
+/**** ADMIN PANEL ****/
+.header-admin{
+    background: #383737;
+    color:#fff;
+}
+.header-admin a{
+    color:#fff;
+}
+.footer{
+    background: #383737;
+    color:#fff;
+}
+.bar{
+    padding:0 !important;
+    display: block !important;
+    margin: 0 !important;
+    border:none !important;
+    background:#1d1c1c !important; ;
+    float: left;
+}
+.dropdown-menu>li>a{color:#000;}

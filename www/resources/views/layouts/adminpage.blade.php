@@ -11,9 +11,12 @@ use App\User;
     <link rel="stylesheet" href="{{ URL::asset('css/tabs.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('/boot/css/bootstrap.min.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<style>
+    body{background: #9e9e9e;}
+</style>
 </head>
 <body>
-<div class="col-xl-12 col-md-12 col-sm-12 header">
+<div class="col-xl-12 col-md-12 col-sm-12 header header-admin">
     <div class="col-xl-6 col-md-6 col-sm-12 admin-all">
         <h3>
             Панель Администратора
@@ -64,16 +67,19 @@ use App\User;
         </ul>
     </div>
 @endif
-<div class="tabs">
+<div class="col-xl-12 col-md-12 col-sm-12 tabs">
     <!-- Это сами вкладки -->
-    <ul class="tabNavigation">
-        <li><a class="" href="/admin-content">Статьи</a></li>
-        @role('SuperAdmin')
+    <div class="bar col-xl-2 col-md-2 col-sm-12">
+        <ul class="tabNavigation col-xl-12 col-md-12 col-sm-12">
+            <li><a class="" href="/admin-content">Статьи</a></li>
+            @role('SuperAdmin')
             <li><a class="" href="/admin-user">Пользователи</a></li>
-        @endrole
-    </ul>
+            @endrole
+        </ul>
+    </div>
+
     <!-- Это контейнеры содержимого -->
-    <div id="content" class="tabs-content">
+    <div id="content" class="col-xl-10 col-md-10 col-sm-12 tabs-content">
         @yield('content')
     </div>
 </div>
