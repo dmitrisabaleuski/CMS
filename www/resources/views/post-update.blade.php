@@ -16,7 +16,7 @@
                         </div>
                         <div class="form-group">
                             <label for="shortDisc">Автор поста</label>
-                            <textarea type="text" class="form-control" id="shortDisc" name="author_name" readonly>{{$post->author_name}}</textarea>
+                            <input type="text" class="form-control" id="shortDisc" name="author_name" value="{{$post->author_name}}" readonly>
                         </div>
                         <div class="form-group">
                             <label for="foolCont">Краткий текст</label>
