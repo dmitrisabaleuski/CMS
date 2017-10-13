@@ -1,11 +1,12 @@
 <?php
+
 namespace App\Http\Controllers\Auth;
+
 use App\User;
-use App\Role;
-use App\Permission;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+
 class RegisterController extends Controller
 {
     /*
@@ -25,6 +26,7 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/';
+
     /**
      * Create a new controller instance.
      *
@@ -34,10 +36,11 @@ class RegisterController extends Controller
     {
 //        $this->middleware('guest');
     }
+
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -48,31 +51,26 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
+
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \App\User
      */
     protected function create(array $data)
     {
+        /**
+         * @var User $user
+         */
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
-        $owner = '';
-        if(!empty($data['secretPass'])){
-            if($data['secretPass'] == '654321'){
-                $owner = (new Role)->where('name','=','SuperAdmin')->first();
-            }else if($data['secretPass'] == '123456'){
-                $owner = (new Role)->where('name','=','Admin')->first();
-            }
-        }else{
-            $owner = (new Role)->where('name','=','User')->first();
-        }
+
         // role attach alias
-        $user->attachRole($owner);
+        $user->attachRole($user->getRoleBySecret($data['secretPass']));
 
         return $user;
     }

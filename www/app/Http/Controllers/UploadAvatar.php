@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
-class uploadAvatar extends Controller
+
+class UploadAvatar extends Controller
 {
-    public function accountAvatar(Request $request,$id){
+    public function accountAvatar(Request $request, $id)
+    {
         /*$user = $id;
         $file = $request->file('avatar');
         $filename = 'avatar-'.$user;
@@ -17,7 +17,7 @@ class uploadAvatar extends Controller
         $path = $request->file('avatar')->store('avatars');
         $post = (new User)->find($id);
         $post->fill([
-            'avatar'=>$path,
+            'avatar' => $path,
         ]);
         $post->update();
         return redirect("admin/user-$id");
