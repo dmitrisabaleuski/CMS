@@ -38,6 +38,13 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="secretPass" class="col-md-4 control-label">Введите секретный пароль для того, что бы стать администратором!</label>
+
+                            <div class="col-md-6">
+                                <input id="secretPass" type="text" class="form-control" name="secretPass" value="{{ old('secretPass') }}">
+                            </div>
+                        </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>

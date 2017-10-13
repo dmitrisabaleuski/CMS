@@ -64,7 +64,7 @@ class EntrustSetupTables extends Migration
 
         $SuperAdmin = new Role();
         $SuperAdmin->name         = 'SuperAdmin';
-        $SuperAdmin->display_name = 'SuperAdministrator'; // optional
+        $SuperAdmin->display_name = 'SuperAdmin'; // optional
         $SuperAdmin->description  = 'User is allowed to manage and edit other users'; // optional
         $SuperAdmin->save();
 
@@ -74,7 +74,7 @@ class EntrustSetupTables extends Migration
         $admin->description  = 'User is allowed to manage and edit posts'; // optional
         $admin->save();
 
-        $SuperAdmin1 = (new User)->where('name', '=', 'SuperAdministrator')->first();
+        $SuperAdmin1 = (new User)->where('name', '=', 'SuperAdmin')->first();
 
         // role attach alias
         $SuperAdmin1->attachRole($SuperAdmin1); // parameter can be an Role object, array, or id

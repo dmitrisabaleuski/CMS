@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use App\User;
+use App\Role;
+use App\Permission;
 class CreateUsersTable extends Migration
 {
     /**
@@ -18,14 +20,18 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('avatar');
             $table->rememberToken();
             $table->timestamps();
         });
         ((new User)->fill([
-            'name'=>'SuperAdministrator',
+            'name'=>'SuperAdmin',
             'email'=>'dmitrisabaleuski@gmail.com',
             'password'=>'$2y$10$dsbsizRB3X0SvLUPK.ZLiOolMNYTwhBc/dqe16bHUTfd98VkVNS7S',
+            'avatar' => '',
         ])->save());
+
+
     }
 
     /**

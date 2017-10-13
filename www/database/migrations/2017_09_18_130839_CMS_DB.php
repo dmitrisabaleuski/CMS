@@ -37,7 +37,8 @@ class CMSDB extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('author');
+            $table->string('author_name');
+            $table->integer('author_id');
             $table->dateTime('date');
             $table->string('description');
             $table->string('content');
@@ -48,7 +49,8 @@ class CMSDB extends Migration
         for ($i=0; $i < 10; $i++) {
             ((new Post)->fill([
                 'name'=>$faker->name,
-                'author'=>'SuperAdmin',
+                'author_name'=>'SuperAdmin',
+                'author_id'=>1,
                 'description'=>$faker->text($maxNbChars = 50),
                 'content'=>$faker->text($maxNbChars = 200),
                 'title'=>$faker->name,

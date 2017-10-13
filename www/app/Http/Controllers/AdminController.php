@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
-use App\Role;
-use DB;
+
 class AdminController extends Controller
 {
     public function admin(){
@@ -17,9 +16,9 @@ class AdminController extends Controller
             ->select([
                 'id',
                 'name',
-                'author',
+                'author_name',
                 'description',
-                'content'])->paginate(10);
+                'content'])->orderBy('id', 'desc')->paginate(10);
         return view('admin-content')->with(['post'=>$post]);
     }
     public function users(){
@@ -27,7 +26,7 @@ class AdminController extends Controller
             ->select([
                 'id',
                 'name',
-                'email'])->paginate(10);
+                'email'])->orderBy('id', 'desc')->paginate(10);
         return view('admin-user')->with(['user'=>$user]);
     }
 }

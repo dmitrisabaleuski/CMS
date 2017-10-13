@@ -14,9 +14,10 @@ class SaveController extends Controller
         $this->validate($request,[
             'name'=>'required|max:255',
             'title'=>'required|max:255',
-            'author'=>'required|max:255',
+            'author_name'=>'required|max:255',
+            'author_id'=>'required|max:255',
             'content'=>'required|max:255',
-            'description'=>'required|max:50',
+            'description'=>'required|max:255',
         ]);
         $data = $request ->all();
         $post = new Post;

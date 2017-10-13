@@ -16,11 +16,11 @@
                         </div>
                         <div class="form-group">
                             <label for="shortDisc">Автор поста</label>
-                            <textarea type="text" class="form-control" id="shortDisc" name="author">{{$post->author}}</textarea>
+                            <textarea type="text" class="form-control" id="shortDisc" name="author_name" readonly>{{$post->author_name}}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="foolCont">Краткий текст</label>
-                            <textarea type="text" class="form-control" id="foolCont" name="shortcont">{{$post->description}}</textarea>
+                            <textarea type="text" class="form-control" id="foolCont" name="description">{{$post->description}}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="foolCont">Полный текст</label>

@@ -13,15 +13,14 @@ class UserEditController extends Controller
     public function update(Request $request,$id){
         $this->validate($request,[
             'name'=>'required|max:255',
-            'title'=>'required|max:255',
-            'author'=>'required|max:255',
-            'content'=>'required|max:255',
-            'description'=>'required|max:50',
+            'email'=>'required|max:255',
+            'password' => bcrypt($request['password']),
         ]);
         $data = $request ->all();
-        $post = (new Post)->find($id);
+        $post = (new User)->find($id);
         $post->fill($data);
         $post->update();
-        return redirect('/');
+        return redirect('admin');
     }
+
 }

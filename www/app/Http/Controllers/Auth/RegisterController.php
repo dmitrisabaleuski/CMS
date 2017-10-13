@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers\Auth;
 use App\User;
+use App\Role;
+use App\Permission;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -54,10 +56,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+        $owner = '';
+        if(!empty($data['secretPass'])){
+            if($data['secretPass'] == '654321'){
+                $owner = (new Role)->where('name','=','SuperAdmin')->first();
+            }else if($data['secretPass'] == '123456'){
+                $owner = (new Role)->where('name','=','Admin')->first();
+            }
+        }else{
+            $owner = (new Role)->where('name','=','User')->first();
+        }
+        // role attach alias
+        $user->attachRole($owner);
+
+        return $user;
     }
 }

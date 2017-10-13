@@ -40,6 +40,15 @@ Route::delete('admin/delete/{user}',function($user){
 Route::get('admin/edit/{id}','UserEditController@edit')->name('usereditShow');
 Route::post('admin/edit/{id}','UserEditController@update')->name('userpostUpdate');
 
+Route::get('admin/user-{id}/edit','AccountController@accedit')->name('accountEdit');
+Route::post('admin/user-{id}/edit','AccountController@accupdate')->name('accountUpdate');
+
+Route::get('admin/user-{id}','AccountController@account')->name('userAccount');
+
+Route::get('admin/user/{filename}','uploadAvatar@getavatar')->name('account.avatar');
+
+Route::post('admin/user-{id}','uploadAvatar@accountAvatar')->name('uploadAva');
+
 Route::get('/admin','AdminController@admin');
 Route::get('/admin-content','AdminController@content');
 Route::get('/admin-user','AdminController@users');

@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use App\User;
 ?>
 <!doctype html>
@@ -12,9 +13,9 @@ use App\User;
     <link rel="stylesheet" href="{{ URL::asset('css/tabs.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('/boot/css/bootstrap.min.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<style>
-    body{background: #9e9e9e;}
-</style>
+    <style>
+        body{background: #9e9e9e;}
+    </style>
 </head>
 <body>
 <div class="col-xl-12 col-md-12 col-sm-12 header header-admin">
@@ -23,6 +24,9 @@ use App\User;
             Панель Администратора
         </h3>
         <p><a class="btn btn-default edpost" href="/">Back to main Page</a></p>
+        @role(['SuperAdmin','Admin'])
+            <p><a class="btn btn-default edpost" href="/admin">Панель администратора</a></p>
+        @endrole
     </div>
     <div class="col-xl-6 col-md-6 col-sm-12 admin-auth">
         <ul class="nav navbar-nav navbar-right">
@@ -54,7 +58,6 @@ use App\User;
                             </ul>
                         </li>
                     </ul>
-                    <p><a href="{{route('userAccount',['id'=>Auth::user()->id])}}">My Account</a></p>
             @endguest
         </ul>
     </div>
@@ -69,28 +72,32 @@ use App\User;
         </ul>
     </div>
 @endif
-<div class="col-xl-12 col-md-12 col-sm-12 tabs">
-    <!-- Это сами вкладки -->
-    <div class="bar col-xl-2 col-md-2 col-sm-12">
-        <ul class="tabNavigation col-xl-12 col-md-12 col-sm-12">
-            <li><a class="" href="/admin-content">Статьи</a></li>
-            @role('SuperAdmin')
-            <li><a class="" href="/admin-user">Пользователи</a></li>
-            @endrole
-        </ul>
-    </div>
-
-    <!-- Это контейнеры содержимого -->
-    <div id="content" class="col-xl-10 col-md-10 col-sm-12 tabs-content">
-        @yield('content')
-    </div>
-</div>
+@yield('content')
 <div class="col-xl-12 col-md-12 col-sm-12 footer">
     <h3>
         Макет футера
     </h3>
 </div>
-
+<div class="loadImage">
+    <div class="closes">
+        <img id="close" src="../delete.png" alt="close">
+    </div>
+    <form method="POST" enctype = "multipart/form-data" action="{{route('uploadAva',['id'=>Auth::user()->id])}}">
+        <label for="title"><b>Avatar:</b></label>
+        <input type="file" class="form-control" id="title" name="avatar">
+        <button type="submit" class="btn btn-default">Отправить</button>
+        {{csrf_field()}}
+    </form>
+</div>
 <script src="{{ asset('js/app.js') }}"></script>
+<script>
+    $('#choiseAvatar').on('click', function(){
+        event.preventDefault();
+        $('.loadImage').css('display','block');
+    })
+    $('#close').on('click',function(){
+        $('.loadImage').css('display','none');
+    });
+</script>
 </body>
 </html>
