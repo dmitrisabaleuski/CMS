@@ -11,6 +11,7 @@
                         <li><p>ID: <b> {{$users->id}} </b></p></li>
                         <li><p>ИМЯ: <b> {{$users->name}} </b></p></li>
                         <li><p>E-mail: <b> {{$users->email}} </b></p></li>
+                        <li><p>Роль: <b>  </b></p></li>
                         <li>
                             <ul>
                                 <li><a class="btn btn-default edpost" role="buttom" href="{{route('usereditShow',['id'=>$users->id])}}">Редактировать</a></li>

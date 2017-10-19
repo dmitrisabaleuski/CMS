@@ -18,7 +18,7 @@ class EditController extends Controller
             'content'=>'required|max:255',
             'description'=>'required|max:50',
         ]);
-        $data = $request ->all();
+        $data = ($request) ->all();
         $post = (new Post)->find($id);
         $post->fill($data);
         $post->update();

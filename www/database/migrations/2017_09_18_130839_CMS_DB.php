@@ -18,10 +18,10 @@ class CMSDB extends Migration
 //
         Schema::create('menus', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->boolean('active');
+            $table->integer('weight');
             $table->string('title');
-            $table->string('link');
-            $table->integer('parent_id');
+            $table->string('url');
             $table->timestamps();
         });
         Schema::create('pages', function (Blueprint $table) {

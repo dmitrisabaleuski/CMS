@@ -8,7 +8,7 @@ use App\User;
 class ShowController extends Controller
 {
     public function show($id){
-        $post = (new Post)->select(['id','name','author','content'])->where('id',$id)->first();
+        $post = (new Post)->select(['id','name','author_name','content'])->where('id',$id)->first();
         return view('post-content')->with(['post'=>$post]);
     }
 }

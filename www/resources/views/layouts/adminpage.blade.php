@@ -77,6 +77,8 @@ use App\User;
             @role('SuperAdmin')
             <li><a class="" href="/admin-user">Пользователи</a></li>
             @endrole
+            <li><a class="" href="/admin-multimedia">Мультимедиа</a></li>
+            <li><a class="" href="/admin-files">Файлы</a></li>
         </ul>
     </div>
 
@@ -91,6 +93,68 @@ use App\User;
     </h3>
 </div>
 
+<div class="loadImage">
+    <div class="closes">
+        <img id="close" src="../delete.png" alt="close">
+    </div>
+    <form method="POST" enctype = "multipart/form-data" action="{{route('addImage')}}">
+        <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
+            <label for="image" class="col-md-4 control-label">Upload Image</label>
+
+            <div class="col-md-6">
+                <input id="image" type="file" class="form-control" name="image" required>
+
+                @if ($errors->has('image'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('avatar') }}</strong>
+                    </span>
+                @endif
+            </div>
+        </div>
+        <button type="submit" class="btn btn-default">Отправить</button>
+        {{csrf_field()}}
+    </form>
+</div>
+<div class="loadFile">
+    <div class="closes">
+        <img id="close" src="../delete.png" alt="close">
+    </div>
+    <form method="POST" enctype="multipart/form-data" action="{{route('addFile')}}">
+        <div class="form-group{{ $errors->has('loadfile') ? ' has-error' : '' }}">
+            <label for="loadfile" class="col-md-4 control-label">Upload File</label>
+
+            <div class="col-md-12">
+                <input id="loadfile" type="file" class="form-control" name="loadfile" required>
+
+                @if ($errors->has('loadfile'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('loadfile') }}</strong>
+                    </span>
+                @endif
+            </div>
+        </div>
+        <button type="submit" class="btn btn-default">Отправить</button>
+        {{csrf_field()}}
+    </form>
+</div>
 <script src="{{ asset('js/app.js') }}"></script>
+<script>
+    $('#add').on('click', function(){
+        event.preventDefault();
+        $('.loadImage').css('display','block');
+    })
+    $('#close').on('click',function(){
+        $('.loadImage').css('display','none');
+    });
+</script>
+<script>
+    $('#addFile').on('click', function(){
+        event.preventDefault();
+        $('.loadFile').css('display','block');
+    })
+    $('#close').on('click',function(){
+        $('.loadFile').css('display','none');
+    });
+</script>
 </body>
 </html>

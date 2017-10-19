@@ -5,8 +5,12 @@
                 @foreach($user as $users)
                     <div class="user-photo col-xl-3 col-md-3 col-sm-12 col-xs-12">
                         @if(!empty($users->avatar))
-                            <img src="../storage/app/{{$users->avatar}}" alt="avatar">
+                            <img id="avatar" src="{{asset($users->avatar)}}" alt="avatar">
+                            <p><a id="changeAvatar" href="">Изменить Аватар</a></p>
+                            <p><a id="deleteAvatar" href="{{route('avatarDelete',['id'=>Auth::user()->id])}}">Удалить Аватар</a></p>
                         @else
+                            <img id="avatar" src="{{ asset('img/NO_IMAGE.png')}}" alt="no-avatar">
+
                             <p><a id="choiseAvatar" href="">Загрузить Аватар</a></p>
                         @endif
                     </div>
@@ -18,6 +22,12 @@
 
                     </div>
                 @endforeach
+
+                <p class="avatar-error">
+                    @if(Session::has('message'))
+                        {{Session::get('message')}}
+                    @endif
+                </p>
             </div>
         <hr>
             <div class="postsbyuser col-xl-12 col-md-12 col-sm-12 col-xs-12">

@@ -83,12 +83,24 @@ use App\User;
         <img id="close" src="../delete.png" alt="close">
     </div>
     <form method="POST" enctype = "multipart/form-data" action="{{route('uploadAva',['id'=>Auth::user()->id])}}">
-        <label for="title"><b>Avatar:</b></label>
-        <input type="file" class="form-control" id="title" name="avatar">
+        <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
+            <label for="avatar" class="col-md-4 control-label">Upload Image</label>
+
+            <div class="col-md-6">
+                <input id="avatar" type="file" class="form-control" name="avatar" required>
+
+                @if ($errors->has('avatar'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('avatar') }}</strong>
+                    </span>
+                @endif
+            </div>
+        </div>
         <button type="submit" class="btn btn-default">Отправить</button>
         {{csrf_field()}}
     </form>
 </div>
+
 <script src="{{ asset('js/app.js') }}"></script>
 <script>
     $('#choiseAvatar').on('click', function(){
@@ -96,6 +108,15 @@ use App\User;
         $('.loadImage').css('display','block');
     })
     $('#close').on('click',function(){
+        $('.loadImage').css('display','none');
+    });
+</script>
+<script>
+    $('#changeAvatar').on('click', function(){
+        event.preventDefault();
+        $('.loadImage').css('display','block');
+    })
+    $('#close2').on('click',function(){
         $('.loadImage').css('display','none');
     });
 </script>

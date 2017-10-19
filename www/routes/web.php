@@ -45,13 +45,23 @@ Route::post('admin/user-{id}/edit','AccountController@accupdate')->name('account
 
 Route::get('admin/user-{id}','AccountController@account')->name('userAccount');
 
-Route::get('admin/user/{filename}','uploadAvatar@getavatar')->name('account.avatar');
+Route::post('admin/user-{id}','UploadAvatar@accountAvatar')->name('uploadAva');
 
-Route::post('admin/user-{id}','uploadAvatar@accountAvatar')->name('uploadAva');
+Route::get('admin/delete-avatar/user-{id}','ChangeAvatar@deleteAvatar')->name('avatarDelete');
 
 Route::get('/admin','AdminController@admin');
 Route::get('/admin-content','AdminController@content');
 Route::get('/admin-user','AdminController@users');
+
+
+Route::get('/admin-multimedia','AdminController@multimedia');
+Route::post('/admin-multimedia/add','AdminController@addMultimedia')->name('addImage');
+Route::get('/admin-multimedia/delete','AdminController@deleteIMG')->name('deleteIMG');
+
+
+Route::get('/admin-files','FileController@openFiles');
+Route::post('/admin-files/add','FileController@addNewFile')->name('addFile');
+Route::get('/admin-files/delete/{fileid}','FileController@deleteFile')->name('deleteFile');
 
 Auth::routes();
 
