@@ -7,6 +7,10 @@ use App\Page;
 
 class PageController extends Controller
 {
+    public function openPages(){
+        $page = (new Page)->select(['id','name','author','description']);
+        return view('admin-pages')->with(['page'=>$page]);
+    }
     public function about(){
         $page = (new Page)->select(['id','name','author','description']);
         $name = "About";

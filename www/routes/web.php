@@ -63,6 +63,15 @@ Route::get('/admin-files','FileController@openFiles');
 Route::post('/admin-files/add','FileController@addNewFile')->name('addFile');
 Route::get('/admin-files/delete/{fileid}','FileController@deleteFile')->name('deleteFile');
 
+
+Route::get('/admin-pages','PageController@openPages');
+Route::post('/admin-pages/add','PageController@addNewPage')->name('addPage');
+Route::delete('admin-pages/delete/{page}',function($page){
+    $page_tmp = App\Page::where('id',$page)->first();
+    $page_tmp->delete();
+    return redirect('/');
+})->name('pageDelete');
+
 Auth::routes();
 
 Route::get('/', 'IndexController@index');

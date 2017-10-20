@@ -1,7 +1,9 @@
 @extends('layouts.adminpage')
 @section('content')
     <div class="add-user col-xl-12 col-md-12 col-sm-12 col-xs-12">
-        <p><a href="auth/register">Добавить пользователя</a></p>
+        <div class="multimedia-options col-xl-12 col-md-12 col-sm-12 col-xs-12">
+            <p><a id="add" href="auth/register"><img src="img/plus-button.png" alt="add"></a></p>
+        </div>
     </div>
     <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12 admin-users">
         <ul>

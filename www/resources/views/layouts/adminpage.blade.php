@@ -73,6 +73,7 @@ use App\User;
     <!-- Это сами вкладки -->
     <div class="bar col-xl-2 col-md-2 col-sm-12">
         <ul class="tabNavigation col-xl-12 col-md-12 col-sm-12">
+            <li><a class="" href="/admin-pages">Страницы</a></li>
             <li><a class="" href="/admin-content">Статьи</a></li>
             @role('SuperAdmin')
             <li><a class="" href="/admin-user">Пользователи</a></li>
