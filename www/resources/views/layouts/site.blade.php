@@ -14,10 +14,10 @@ use App\User;
 </head>
 <body>
 <div class="col-xl-12 col-md-12 col-sm-12 header header-admin">
+    <div class="col-xl-12 col-md-12 col-sm-12 menu">
+        {!! $MyNavBar->asUl() !!}
+    </div>
     <div class="col-xl-6 col-md-6 col-sm-12 admin-all">
-        <h1>
-            Главная страница
-        </h1>
         @role(['SuperAdmin','Admin'])
         <p><a class="btn btn-default edpost" href="/admin">Панель администратора</a></p>
         @endrole

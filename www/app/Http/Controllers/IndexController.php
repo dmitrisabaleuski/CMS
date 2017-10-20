@@ -10,7 +10,8 @@ class IndexController extends Controller
     public function  index(){
 
         $post = (new Post)->select(['id','name','author_name','description'])->orderBy('id', 'desc')->paginate(5);
-        return view('page')->with(['post'=>$post]);
+        $name = "Main Page";
+        return view('page')->with(['post'=>$post,'name'=>$name]);
     }
 
 }

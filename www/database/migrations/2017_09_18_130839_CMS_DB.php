@@ -18,10 +18,9 @@ class CMSDB extends Migration
 //
         Schema::create('menus', function (Blueprint $table) {
             $table->increments('id');
-            $table->boolean('active');
-            $table->integer('weight');
             $table->string('title');
             $table->string('url');
+            $table->integer('parent_id');
             $table->timestamps();
         });
         Schema::create('pages', function (Blueprint $table) {
@@ -30,8 +29,6 @@ class CMSDB extends Migration
             $table->string('description');
             $table->string('link');
             $table->string('author');
-            $table->dateTime('create_date');
-            $table->dateTime('changes_date');
             $table->timestamps();
         });
         Schema::create('posts', function (Blueprint $table) {

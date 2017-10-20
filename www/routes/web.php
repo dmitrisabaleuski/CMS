@@ -77,3 +77,7 @@ Route::post('auth/register', 'Auth\RegisterController@register');
 
 //Маршруты восстановления пароля
 //Route::post('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+
+//PAGES
+Route::get('/about', 'PageController@about');
+Route::get('/contact', 'PageController@contact');

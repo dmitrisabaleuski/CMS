@@ -10,8 +10,8 @@
         "fideloper/proxy": "~3.3",
         "fzaninotto/faker": "^1.7",
         "laravel/framework": "5.5.*",
-        "laravel/tinker": "~1.0"
-
+        "laravel/tinker": "~1.0",
+        "lavary/laravel-menu": "^1.7"
     },
     "require-dev": {
         "zizaco/entrust": "5.2.x-dev",
