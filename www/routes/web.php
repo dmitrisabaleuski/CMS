@@ -19,15 +19,15 @@ Route::get('/', 'IndexController@index');
 Route::get('article/{id}', 'ShowController@show')->name('articleShow');
 
 
-Route::get('page/add','SaveController@add');
-Route::post('page/add','SaveController@save')->name('postSave');
-Route::delete('page/delete/{post}',function($post){
+Route::get('post/add','SaveController@add');
+Route::post('post/add','SaveController@save')->name('postSave');
+Route::delete('post/delete/{post}',function($post){
     $post_tmp = App\Post::where('id',$post)->first();
     $post_tmp->delete();
     return redirect('/');
 })->name('postDelete');
-Route::get('page/edit/{id}','EditController@edit')->name('editShow');
-Route::post('page/edit/{id}','EditController@update')->name('postUpdate');
+Route::get('post/edit/{id}','EditController@edit')->name('editShow');
+Route::post('post/edit/{id}','EditController@update')->name('postUpdate');
 
 
 //Работа с пользователями
@@ -65,7 +65,6 @@ Route::get('/admin-files/delete/{fileid}','FileController@deleteFile')->name('de
 
 
 Route::get('/admin-pages','PageController@openPages');
-Route::post('/admin-pages/add','PageController@addNewPage')->name('addPage');
 Route::delete('admin-pages/delete/{page}',function($page){
     $page_tmp = App\Page::where('id',$page)->first();
     $page_tmp->delete();
@@ -90,3 +89,5 @@ Route::post('auth/register', 'Auth\RegisterController@register');
 //PAGES
 Route::get('/about', 'PageController@about');
 Route::get('/contact', 'PageController@contact');
+Route::get('/addPage','PageController@addPage');
+Route::post('/addPage','PageController@savePage')->name('savePage');;

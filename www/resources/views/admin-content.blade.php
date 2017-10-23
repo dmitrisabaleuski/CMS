@@ -2,7 +2,7 @@
 @section('content')
     <div class="add-post col-xl-12 col-md-12 col-sm-12 col-xs-12">
         <div class="multimedia-options col-xl-12 col-md-12 col-sm-12 col-xs-12">
-            <p><a id="add" href="/page/add"><img src="img/plus-button.png" alt="add"></a></p>
+            <p><a id="add" href="/post/add"><img src="img/plus-button.png" alt="add"></a></p>
         </div>
     </div>
     <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12 admin-content">

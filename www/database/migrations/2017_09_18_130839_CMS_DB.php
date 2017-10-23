@@ -26,7 +26,7 @@ class CMSDB extends Migration
         Schema::create('pages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('description');
+            $table->string('content');
             $table->string('link');
             $table->string('author');
             $table->timestamps();
