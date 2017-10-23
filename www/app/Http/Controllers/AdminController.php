@@ -11,27 +11,39 @@ use Illuminate\Support\Facades\File;
 
 class AdminController extends Controller
 {
-    public function admin(){
+    public function admin()
+    {
         return view('admin');
     }
-    public function content(){
+
+    public function content()
+    {
         $post = (new Post)
             ->select([
                 'id',
                 'name',
                 'author_name',
                 'description',
-                'content'])->orderBy('id', 'desc')->paginate(10);
-        return view('admin-content')->with(['post'=>$post]);
+                'content'
+            ])->orderBy('id', 'desc')->paginate(10);
+        return view('admin-content')->with(['post' => $post]);
     }
-    public function users(){
+
+    public function users()
+    {
         $user = (new User)
             ->select([
                 'id',
                 'name',
+<<<<<<< HEAD
                 'email'])->orderBy('id', 'desc')->paginate(10);
 
         return view('admin-user')->with(['user'=>$user]);
+=======
+                'email'
+            ])->orderBy('id', 'desc')->paginate(10);
+        return view('admin-user')->with(['user' => $user]);
+>>>>>>> b117561fcc059e302b03c38ea8f6b7cade0dcedc
     }
     public function multimedia(){
         $files = Storage::allFiles('files/all-multimedia');

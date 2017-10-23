@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('avatar');
+            $table->string('avatar')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -28,7 +28,6 @@ class CreateUsersTable extends Migration
             'name'=>'SuperAdmin',
             'email'=>'dmitrisabaleuski@gmail.com',
             'password'=>'$2y$10$dsbsizRB3X0SvLUPK.ZLiOolMNYTwhBc/dqe16bHUTfd98VkVNS7S',
-            'avatar' => '',
         ])->save());
 
 
