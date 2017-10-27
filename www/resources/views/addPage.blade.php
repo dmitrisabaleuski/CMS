@@ -1,4 +1,4 @@
-@extends('layouts.site')
+@extends('layouts.adminpage')
 @section('content')
     <div class="add-page col-xl-12 col-md-12 col-sm-12 col-xs-12">
         <h1>{{$name}}</h1>

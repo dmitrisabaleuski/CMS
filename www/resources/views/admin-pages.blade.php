@@ -1,9 +1,7 @@
 @extends('layouts.adminpage')
 @section('content')
-    <div class="add-post col-xl-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="multimedia-options col-xl-12 col-md-12 col-sm-12 col-xs-12">
-            <p><a id="addPage" href="addPage"><img src="img/plus-button.png" alt="add"></a></p>
-        </div>
+    <div class="add-page col-xl-12 col-md-12 col-sm-12 col-xs-12">
+            <p><a id="addPage" href="/addPage"><img src="img/plus-button.png" alt="add"></a></p>
     </div>
     <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12 admin-pages">
         <ul>

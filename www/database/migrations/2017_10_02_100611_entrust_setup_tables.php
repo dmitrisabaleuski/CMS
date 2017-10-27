@@ -1,9 +1,9 @@
 <?php
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use App\User;
-use App\Role;
-use App\Permission;
+use App\Model\User;
+use App\Model\Role;
+use App\Model\Permission;
 class EntrustSetupTables extends Migration
 {
     /**

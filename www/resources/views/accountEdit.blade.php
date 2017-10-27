@@ -1,4 +1,4 @@
-@extends('layouts.userupdate')
+@extends('layouts.adminpage')
 @section('content')
     <div class="jumbotron">
         <div class="container">

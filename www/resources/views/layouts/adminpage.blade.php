@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Support\Facades\DB;
-use App\User;
+use App\Model\User;
 ?>
 <!doctype html>
 <html>
@@ -17,48 +17,42 @@ use App\User;
 </style>
 </head>
 <body>
-<div class="col-xl-12 col-md-12 col-sm-12 header header-admin">
-    <div class="col-xl-6 col-md-6 col-sm-12 admin-all">
-        <h3>
-            Панель Администратора
-        </h3>
-        <p><a class="btn btn-default edpost" href="/">Back to main Page</a></p>
+<header class="col-xl-12 col-md-12 col-sm-12 admin-panel">
+    <div class="title col-xl-6 col-md-6 col-sm-12">
+        <h1>{{$name}}</h1>
+        <p class="backtomain"><a class="btn btn-default" href="/">Вернуться на главную</a></p>
     </div>
-    <div class="col-xl-6 col-md-6 col-sm-12 admin-auth">
+    <div class="col-xl-6 col-md-6 col-sm-12 auth">
         <ul class="nav navbar-nav navbar-right">
             <!-- Authentication Links -->
             @guest
-                <li><a href="{{ route('login') }}">Login</a></li>
-                <li><a href="{{ route('register') }}">Register</a></li>
+                <li><a href="{{ route('login') }}">Логин</a></li>
+                <li><a href="{{ route('register') }}">Регистрация</a></li>
                 @else
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
 
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();">
+                                    Выход
+                                </a>
 
-                            <ul class="dropdown-menu" role="menu">
-                                <li>
-                                    <a href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                       document.getElementById('logout-form').submit();">
-                                        Logout
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <p><a href="{{route('userAccount',['id'=>Auth::user()->id])}}">My Account</a></p>
-            @endguest
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                    <p><a href="{{route('userAccount',['id'=>Auth::user()->id])}}">Мой аккаунт</a></p>
+                    @endguest
         </ul>
     </div>
-</div>
+</header>
 
 @if(count($errors)>0)
     <div class="alert alert-danger">
@@ -73,13 +67,13 @@ use App\User;
     <!-- Это сами вкладки -->
     <div class="bar col-xl-2 col-md-2 col-sm-12">
         <ul class="tabNavigation col-xl-12 col-md-12 col-sm-12">
-            <li><a class="" href="/admin-pages">Страницы</a></li>
-            <li><a class="" href="/admin-content">Статьи</a></li>
+            <li><a href="/admin-pages">Страницы</a></li>
+            <li><a href="/admin-articles">Статьи</a></li>
             @role('SuperAdmin')
-            <li><a class="" href="/admin-user">Пользователи</a></li>
+            <li><a href="/admin-user">Пользователи</a></li>
             @endrole
-            <li><a class="" href="/admin-multimedia">Мультимедиа</a></li>
-            <li><a class="" href="/admin-files">Файлы</a></li>
+            <li><a href="/admin-multimedia">Мультимедиа</a></li>
+            <li><a href="/admin-files">Файлы</a></li>
         </ul>
     </div>
 
@@ -88,17 +82,38 @@ use App\User;
         @yield('content')
     </div>
 </div>
-<div class="col-xl-12 col-md-12 col-sm-12 footer">
-    <h3>
+<footer class="col-xl-12 col-md-12 col-sm-12">
+    <span>
         Макет футера
-    </h3>
-</div>
+    </span>
+</footer>
+<div class="loadAvatar">
+    <div class="closes">
+        <img id="close3" src="../delete.png" alt="close">
+    </div>
+    <form method="POST" enctype = "multipart/form-data" action="{{route('uploadAvatar',['id'=>Auth::user()->id])}}">
+        <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
+            <label for="ava" class="col-md-4 control-label">Upload Image</label>
 
+            <div class="col-md-6">
+                <input id="ava" type="file" class="form-control" name="avatar" required>
+
+                @if ($errors->has('avatar'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('avatar') }}</strong>
+                    </span>
+                @endif
+            </div>
+        </div>
+        <button type="submit" class="btn btn-default">Отправить</button>
+        {{csrf_field()}}
+    </form>
+</div>
 <div class="loadImage">
     <div class="closes">
         <img id="close" src="../delete.png" alt="close">
     </div>
-    <form method="POST" enctype = "multipart/form-data" action="{{route('addImage')}}">
+    <form method="POST" enctype = "multipart/form-data" action="{{route('addMultimedia')}}">
         <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
             <label for="image" class="col-md-4 control-label">Upload Image</label>
 
@@ -118,7 +133,7 @@ use App\User;
 </div>
 <div class="loadFile">
     <div class="closes">
-        <img id="close" src="../delete.png" alt="close">
+        <img id="close2" src="../delete.png" alt="close">
     </div>
     <form method="POST" enctype="multipart/form-data" action="{{route('addFile')}}">
         <div class="form-group{{ $errors->has('loadfile') ? ' has-error' : '' }}">
@@ -139,23 +154,42 @@ use App\User;
     </form>
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/forms.js') }}"></script>
+<script src="{{URL::to('tinymce/js/tinymce/tinymce.min.js')}}"></script>
 <script>
-    $('#add').on('click', function(){
-        event.preventDefault();
-        $('.loadImage').css('display','block');
-    })
-    $('#close').on('click',function(){
-        $('.loadImage').css('display','none');
-    });
-</script>
-<script>
-    $('#addFile').on('click', function(){
-        event.preventDefault();
-        $('.loadFile').css('display','block');
-    })
-    $('#close').on('click',function(){
-        $('.loadFile').css('display','none');
-    });
-</script>
+    var editor_config = {
+        path_absolute : "{{ URL::to('/') }}/",
+        selector : "textarea",
+        plugins: [
+            "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+            "searchreplace wordcount visualblocks visualchars code fullscreen",
+            "insertdatetime media nonbreaking save table contextmenu directionality",
+            "emoticons template paste textcolor colorpicker textpattern"
+        ],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
+        relative_urls: false,
+        file_browser_callback : function(field_name, url, type, win) {
+            var x = window.innerWidth || document.documentElement.clientWidth || document.getElementByTagName('body')[0].clientWidth;
+            var y = window.innerHeight|| document.documentElement.clientHeight|| document.grtElementByTagName('body')[0].clientHeight;
+            var cmsURL = editor_config.path_absolute+'laravel-filemanaget?field_name'+field_name;
+            if (type = 'image') {
+                cmsURL = cmsURL+'&type=Images';
+            } else {
+                cmsUrl = cmsURL+'&type=Files';
+            }
+
+            tinyMCE.activeEditor.windowManager.open({
+                file : cmsURL,
+                title : 'Filemanager',
+                width : x * 0.8,
+                height : y * 0.8,
+                resizeble : 'yes',
+                close_previous : 'no'
+            });
+        }
+    };
+
+    tinymce.init(editor_config);
+</script>﻿
 </body>
 </html>

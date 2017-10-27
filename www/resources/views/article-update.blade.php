@@ -1,11 +1,11 @@
-@extends('layouts.update')
+@extends('layouts.adminpage')
 @section('content')
     <div class="jumbotron">
         <div class="container">
             @if($post)
-                <p><a class="btn btn-default backpost" href="{{route('articleShow',['id'=>$post->id])}}">Back to post</a></p>
+                <p><a class="btn btn-default backpost" href="{{route('articleShow',['id'=>$post->id])}}">Вернуться к статье</a></p>
                 <div class="form">
-                    <form method="POST" action="{{route('postUpdate',['post'=>$post->id])}}">
+                    <form method="POST" action="{{route('articleUpdate',['post'=>$post->id])}}">
                         <div class="form-group">
                             <label for="title">Название</label>
                             <input type="text" class="form-control" id="title" name="name" value="{{$post->name}}">

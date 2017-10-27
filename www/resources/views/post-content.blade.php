@@ -1,18 +1,16 @@
 @extends('layouts.site')
 @section('content')
-    <p><a class="btn btn-default edpost" href="/">Back to main Page</a></p>
-    <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12 content">
-    @if($post)
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h1>
-                    {{$post->name}}
-                </h1>
-                <p>{{$post->content}}</p>
-                <p>Автор {{$post->author}}</p>
-                @role('admin')
-                <p><a class="btn btn-default edpost" role="buttom" href="{{route('editShow',['id'=>$post->id])}}">Редактировать</a></p>
-                @endrole
-            </div>
-    @endif
+    <p class="backtomain"><a class="btn btn-default" href="/">Вернуться на главную</a></p>
+    <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12 singl-article">
+        @if($post)
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2>{{$post->name}}</h2>
+                    <p class="article-content">{{$post->content}}</p>
+                    <p class="article-author">Автор: <span>{{$post->author_name}}</span></p>
+                    @role('admin')
+                    <p><a class="btn btn-default edpost" role="buttom" href="{{route('editShow',['id'=>$post->id])}}">Редактировать</a></p>
+                    @endrole
+                </div>
+        @endif
     </div>
 @endsection

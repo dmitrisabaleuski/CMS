@@ -1,8 +1,8 @@
 <?php
 use Illuminate\Support\Facades\DB;
-use App\User;
+use App\Model\User;
 ?>
-        <!doctype html>
+<!doctype html>
 <html>
 <head>
     <meta charset="utf8">
@@ -11,24 +11,27 @@ use App\User;
     <link rel="stylesheet" href="{{ URL::asset('css/style.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('/boot/css/bootstrap.min.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 </head>
 <body>
-<div class="col-xl-12 col-md-12 col-sm-12 header header-admin">
+<header class="col-xl-12 col-md-12 col-sm-12">
     <div class="col-xl-12 col-md-12 col-sm-12 menu">
         {!! $MyNavBar->asUl() !!}
     </div>
-    <div class="col-xl-6 col-md-6 col-sm-12 admin-all">
+    <div class="title col-xl-6 col-md-6 col-sm-12">
+        <h1>{{$name}}</h1>
         @role(['SuperAdmin','Admin'])
-        <p><a class="btn btn-default edpost" href="/admin">Панель администратора</a></p>
+        <p class="adminPanel"><a class="btn btn-default panelEnter" href="/admin">Панель администратора</a></p>
         @endrole
     </div>
-
     <div class="col-xl-6 col-md-6 col-sm-12 auth">
         <ul class="nav navbar-nav navbar-right">
             <!-- Authentication Links -->
             @guest
-                <li><a href="{{ route('login') }}">Login</a></li>
-                <li><a href="{{ route('register') }}">Register</a></li>
+                <li><a href="{{ route('login') }}">Логин</a></li>
+                <li><a href="{{ route('register') }}">Регистрация</a></li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -39,8 +42,8 @@ use App\User;
                             <li>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    Logout
+                                   document.getElementById('logout-form').submit();">
+                                    Выход
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -49,14 +52,14 @@ use App\User;
                             </li>
                         </ul>
                     </li>
-                    <p><a href="{{route('userAccount',['id'=>Auth::user()->id])}}">My Account</a></p>
+                    <p><a href="{{route('userAccount',['id'=>Auth::user()->id])}}">Мой аккаунт</a></p>
             @endguest
         </ul>
 
     </div>
 
 
-</div>
+</header>
 
 @if(count($errors)>0)
     <div class="alert alert-danger">
@@ -69,11 +72,11 @@ use App\User;
 @endif
 @yield('content')
 
-<div class="col-xl-12 col-md-12 col-sm-12 footer">
-    <h1>
+<footer class="col-xl-12 col-md-12 col-sm-12">
+    <span>
         Макет футера
-    </h1>
-</div>
+    </span>
+</footer>
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

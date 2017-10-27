@@ -1,11 +1,11 @@
 @extends('layouts.adminpage')
 @section('content')
+    <div class="add-file col-xl-12 col-md-12 col-sm-12 col-xs-12">
+        <p><a id="addFile" href=""><img src="img/plus-button.png" alt="add"></a></p>
+    </div>
     <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12 admin-files">
-        <div class="files-options col-xl-12 col-md-12 col-sm-12 col-xs-12">
-            <p><a id="addFile" href=""><img src="img/plus-button.png" alt="add"></a></p>
-        </div>
         <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12 files">
-            @if(!empty($files))
+            @if(count($files))
                 @foreach($files as $file)
                     <div class="col-xl-2 col-md-2 col-sm-6 col-xs-12 file">
                         <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12 file-inside">

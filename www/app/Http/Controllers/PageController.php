@@ -3,14 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Page;
+use App\Model\Page;
 
 class PageController extends Controller
 {
-    public function openPages(){
-        $page = (new Page)->select(['id','name','author','content','link']);
-        return view('admin-pages')->with(['page'=>$page]);
-    }
     public function addPage(){
         $name = "New Page";
         return view('addPage')->with(['name'=>$name]);
@@ -31,16 +27,28 @@ class PageController extends Controller
             'link'=>"/$name",
         ]);
         $page->save();
-        return view('admin');
+        return view('admin-pages');
     }
     public function about(){
-        $page = (new Page)->select(['id','name','author','description']);
+        $page = (new Page)->select([
+            'id',
+            'name',
+            'author',
+            'description',
+        ]);
         $name = "About";
-        return view('content-page')->with(['page'=>$page,'name'=>$name]);
+        return view('content-page')
+            ->with(['page'=>$page,'name'=>$name]);
     }
     public function contact(){
-        $page = (new Page)->select(['id','name','author','description']);
+        $page = (new Page)->select([
+            'id',
+            'name',
+            'author',
+            'description',
+        ]);
         $name = "Contact";
-        return view('content-page')->with(['page'=>$page,'name'=>$name]);
+        return view('content-page')
+            ->with(['page'=>$page,'name'=>$name]);
     }
 }

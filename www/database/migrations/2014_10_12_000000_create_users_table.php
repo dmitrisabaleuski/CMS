@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\User;
-use App\Role;
-use App\Permission;
+use App\Model\User;
+use App\Model\Role;
+use App\Model\Permission;
 class CreateUsersTable extends Migration
 {
     /**

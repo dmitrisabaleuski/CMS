@@ -49,21 +49,15 @@ ul.tabNavigation li a.selected:hover {
     border: 3px solid #f00;
 }
 
-ul.tabNavigation li a:hover {
-    background: #ccc;
-    color: #000;
+div.bar>ul.tabNavigation>li{
+    transition: all .1s ease-in-out;
+    cursor: pointer;
 }
-
+div.bar>ul.tabNavigation>li:hover{background: #ccc;}
+div.bar>ul.tabNavigation>li:hover a{color: #000;}
+div.bar>ul.tabNavigation>li>a:hover{color:red;}
 ul.tabNavigation li a:focus {
     outline: 0;
-}
-
-div.tabs div {
-    padding: 5px;
-    margin-top: 3px;
-    border: 1px solid #FFF;
-    background: #FFF;
-    display: inline-block;
 }
 
 div.tabs div h2 {
@@ -75,6 +69,8 @@ div.tabs div h2 {
     margin: 0;
     padding-top:0;
     padding-bottom: 0;
+    min-height:100vh;
+    background: #FFF;
 }
 .tabs .single-user{
     display: flex;

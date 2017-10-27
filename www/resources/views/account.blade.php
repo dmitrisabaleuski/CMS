@@ -1,11 +1,11 @@
-@extends('layouts.useracc')
+@extends('layouts.adminpage')
 @section('content')
     <div class="col-xl-12 col-md-12 col-sm-12 col-xs-1 all-about-user">
             <div class="account-info col-xl-12 col-md-12 col-sm-12 col-xs-12">
-                @foreach($user as $users)
+
                     <div class="user-photo col-xl-3 col-md-3 col-sm-12 col-xs-12">
-                        @if(!empty($users->avatar))
-                            <img id="avatar" src="{{asset($users->avatar)}}" alt="avatar">
+                        @if(!empty($user->avatar))
+                            <img id="avatar" src="{{asset($user->avatar)}}" alt="avatar">
                             <p><a id="changeAvatar" href="">Изменить Аватар</a></p>
                             <p><a id="deleteAvatar" href="{{route('avatarDelete',['id'=>Auth::user()->id])}}">Удалить Аватар</a></p>
                         @else
@@ -16,13 +16,11 @@
                     </div>
                     <div class="user-info col-xl-9 col-md-9 col-sm-12 col-xs-12">
 
-                            <p>Имя: {{$users->name}}</p>
-                            <p>E-mail: {{$users->email}}</p>
-                            <p><a class="btn btn-default changepass" role="buttom" href="{{route('accountEdit',['id'=>$users->id])}}">Редактировать пользователя</a></p>
+                            <p>Имя: {{$user->name}}</p>
+                            <p>E-mail: {{$user->email}}</p>
+                            <p><a class="btn btn-default changepass" role="buttom" href="{{route('accountEdit',['id'=>$user->id])}}">Редактировать пользователя</a></p>
 
                     </div>
-                @endforeach
-
                 <p class="avatar-error">
                     @if(Session::has('message'))
                         {{Session::get('message')}}
@@ -47,10 +45,10 @@
                                 </div>
                             </div>
                             <ul>
-                                <li><a class="btn btn-default edpost" role="buttom" href="{{route('editShow',['id'=>$posts->id])}}">Редактировать</a></li>
+                                <li><a class="btn btn-default edpost" role="buttom" href="{{route('articleEdit',['id'=>$posts->id])}}">Редактировать</a></li>
                                 <li><a class="btn btn-default main" role="buttom" href="{{route('articleShow',['id'=>$posts->id])}}">Просмотреть</a></li>
                                 <li>
-                                    <form action="{{route('postDelete',['post'=>$posts->id])}}" method="POST">
+                                    <form action="{{route('articleDelete',['postId'=>$posts->id])}}" method="POST">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <button type="submit" class="btn btn-danger">Удаление</button>
                                         {{csrf_field()}}

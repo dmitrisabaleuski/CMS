@@ -1,9 +1,9 @@
 @extends('layouts.adminpage')
 @section('content')
+    <div class="add-multimedia col-xl-12 col-md-12 col-sm-12 col-xs-12">
+        <p><a id="add" href=""><img src="img/plus-button.png" alt="add"></a></p>
+    </div>
     <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12 admin-multimedia">
-        <div class="multimedia-options col-xl-12 col-md-12 col-sm-12 col-xs-12">
-            <p><a id="add" href=""><img src="img/plus-button.png" alt="add"></a></p>
-        </div>
         <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12 images">
             @if(!empty($files))
                 @for($i=0;$i<count($files);$i++)
@@ -12,7 +12,7 @@
                         <div class="image-options">
                             <p><a id="lookIMG" target="_blank" role="buttom" href="{{$files[$i]}}"><img src="img/eye.png" alt="look"></a></p>
                             @role('SuperAdmin')
-                                <p><a id="deleteIMG" role="buttom" href="{{route('deleteIMG',['file'=>$files[$i]])}}"><img src="img/trash.png" alt="delete"></a></p>
+                                <p><a id="deleteIMG" role="buttom" href="{{route('deleteMultimedia',['file'=>$files[$i]])}}"><img src="img/trash.png" alt="delete"></a></p>
                             @endrole
                         </div>
                     </div>

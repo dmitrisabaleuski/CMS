@@ -1,3 +1,214 @@
+/****** HEADER ******/
+header{
+    padding: 10px;
+    float: left;
+    background: #383737;
+    color:#fff;
+}
+header a{color:#fff;}
+div.title{float:left;}
+header.admin-panel p.backtomain{text-align:left;}
+p.adminPanel{margin: 10px 0;}
+.menu>ul{display: flex;justify-content:center;}
+.menu>ul>li>a{padding: 0 15px;}
+.menu>ul>li{transition: all .15s ease-in-out;}
+.menu>ul>li:hover{background: #d800ff;border-radius:5px;}
+.menu>ul>li:hover a{color: #fff;text-decoration: none;}
+.menu>ul>li.active{background: red;border-radius:5px;}
+.auth{float: left;}
+.auth .nav{float: right;}
+.open>.dropdown-menu {display: block;}
+.dropdown-menu {
+    z-index: 1000 !important;
+    display: none ;
+    min-width: 110px !important;
+    background-color: #fff !important;
+    border: 1px solid rgba(0,0,0,.15) !important;
+    border-radius: 4px !important;
+}
+header>div.auth>ul.nav a,
+header>div.auth>ul.nav>p>a{
+    color: #fff;
+    font-size: 1.1em;
+    transition: all .15s ease-in-out;
+}
+header>div.auth>ul.nav a:hover,
+header>div.auth>ul.nav>p>a:hover{
+    text-decoration: none;
+    color: #0ff900;
+}
+header>div.auth>ul.nav>li>ul>li>a{color:#000;}
+header>div.auth>ul.nav>li>ul>li>a:hover{text-decoration: none;color:red;}
+
+/******* FOOTER ******/
+footer{
+    padding: 10px;
+    float: left;
+    background: #383737;
+    color:#fff;
+}
+
+/****** MAIN PAGE CONTENT BOX  ******/
+div.content>article{
+    background: #fff;
+    padding-bottom: 10px;
+    margin-top: 25px;
+}
+
+/****** SINGLE POST ******/
+p.backtomain{
+    background: #383737;
+    float: left;
+    width: 100%;
+    margin-bottom: 0;
+    padding-bottom: 20px;
+    text-align: center;
+}
+p.backtomain>a{color:#fff;}
+p.backtomain>a:hover{background: #fff;color:red;font-size: 1.1em;}
+div.singl-article{
+    float: left;
+    padding: 10px 25px 10px 25px;
+    background: #a2a2a2;
+    color:#fff;
+}
+p.article-content{font-size:1.2em;}
+p.article-author>span{font-weight: bold;}
+
+/****** ADMIN PANEL ******/
+div.admin-first-page>p{font-size:2em;}
+
+        /*** ADMIN PAGE***/
+div.add-page{
+    text-align: right;
+    background: rgba(84, 245, 74, 0.27) !important;
+    display: flex !important;
+    justify-content: flex-end;
+    padding: 1% !important;
+    margin-bottom: 10px;
+    margin-top: 15px;
+
+}
+a#addPage>img{width:25%;}
+a#addPage>img:hover{opacity: 0.7;}
+div.add-page>p{
+    margin-bottom: 0;
+}
+
+        /*** ADMIN POSTS***/
+div.add-article {
+    text-align: right;
+    background: rgba(84, 245, 74, 0.27) !important;
+    display: flex !important;
+    justify-content: flex-end;
+    padding: 1% !important;
+    margin-bottom: 10px;
+    margin-top: 15px;
+
+}
+a#addArticle>img{width:25%;}
+a#addArticle>img:hover{opacity: 0.7;}
+div.add-article>p{
+    margin-bottom: 0;
+}
+
+/****** ADD POSTS******/
+
+
+        /*** ADMIN USER***/
+div.add-user{
+    text-align: right;
+    background: rgba(84, 245, 74, 0.27) !important;
+    display: flex !important;
+    justify-content: flex-end;
+    padding: 1% !important;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+a#addUser>img{width:25%;}
+a#addUser>img:hover{opacity: 0.7;}
+div.add-user>p{
+    margin-bottom: 0;
+}
+
+        /*** ADMIN MULTIMEDIA***/
+div.add-multimedia{
+    text-align: right;
+    background: rgba(84, 245, 74, 0.27) !important;
+    display: flex !important;
+    justify-content: flex-end;
+    padding: 1% !important;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+a#add>img{width:25%;}
+a#add>img:hover{opacity: 0.7;}
+div.add-multimedia>p{
+    margin-bottom: 0;
+}
+
+        /*** ADMIN FILES***/
+div.add-file{
+    text-align: right;
+    background: rgba(84, 245, 74, 0.27) !important;
+    display: flex !important;
+    justify-content: flex-end;
+    padding: 1% !important;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+a#addFile>img{width:25%;}
+a#addFile>img:hover{opacity: 0.7;}
+div.add-file>p{
+    margin-bottom: 0;
+}
+
+/***** ACCAUNT *****/
+.loadFile,
+.loadAvatar,
+.loadImage{
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    text-align: center;
+    padding-top: 8%;
+}
+.loadFile>form,
+.loadAvatar>form,
+.loadImage>form{
+    width: 50%;
+    margin: 0 auto;
+    background: #fff;
+}
+.loadFile>form>label,
+.loadAvatar>form>label,
+.loadImage>form>label{
+    text-transform: uppercase;
+    font-size: 2em;
+}
+.loadFile>.closes>img,
+.loadAvatar>.closes>img,
+.loadImage>.closes>img{
+    cursor: pointer;
+    width: 3%;
+    margin: 1%;
+}
+.loadFile>.closes,
+.loadAvatar>.closes,
+.loadImage>.closes{
+    width: 50%;
+    margin: 0 auto;
+    text-align: right;
+    background: #fff;
+}
+
+
+
+
+
 .add-post,.admin-content,.content>div{border: 1px solid #000;float: left}
 .content>div{
     margin-right: 1%;
@@ -8,14 +219,14 @@
 .content>div:nth-child(n6){
     margin-right: 0%;
 }
-div.header, div.footer, div.admin-auth, div.admin-all{padding: 10px;float: left}
+
 div.admin-auth{text-align: right;}
 div.content{
     float: left;
     padding: 10px 25px 10px 25px;
     background: #a2a2a2;
 }
-div.post{background: #fff;}
+
 div h1{margin-bottom: 0;}
 .admin-content>ul{
     width:100%;
@@ -46,7 +257,7 @@ ul{list-style-type: none;}
     background: #880000;
     color:#fff;
 }
-a.edpost:hover{
+a.panelEnter:hover{
     transform: 1.5s;
     background: #ffa500;
     color:#000;
@@ -64,36 +275,7 @@ button:hover{
     background: #ffa500;
     color:#000;
 }
-.auth{
-    float: left;
-    text-align: right;
-}
-.auth .nav{
-    float: right!important;
-    margin-right: 11%;
-}
-.open>.dropdown-menu {
-    display: block;
-}
-.dropdown-menu {
-    position: absolute !important;
-    top: 100% !important;
-    left: 0 !important;
-    z-index: 1000 !important;
-    display: none ;
-    min-width: 160px !important;
-    padding: 5px 0 !important;
-    margin: 2px 0 0 !important;
-    list-style: none !important;
-    font-size: 14px !important;
-    text-align: left !important;
-    background-color: #fff !important;
-    border: 1px solid #ccc !important;
-    border: 1px solid rgba(0,0,0,.15) !important;
-    border-radius: 4px !important;
-    box-shadow: 0 6px 12px rgba(0,0,0,.175) !important;
-    background-clip: padding-box !important;
-}
+
 
 .admin-auth{
     float: left;
@@ -149,13 +331,8 @@ button:hover{
     background: #383737;
     color:#fff;
 }
-.header-admin a{
-    color:#fff;
-}
-.footer{
-    background: #383737;
-    color:#fff;
-}
+
+
 .bar{
     padding:0 !important;
     display: block !important;
@@ -164,7 +341,7 @@ button:hover{
     background:#1d1c1c !important; ;
     float: left;
 }
-.dropdown-menu>li>a{color:#000;}
+
 
 /***** ACCOUNTS *****/
 div.all-about-user{float: left;}
@@ -206,37 +383,7 @@ div.all-about-user{float: left;}
     background: #ffa500;
     color:#000;
 }
-.loadImage{
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.45);
-    text-align: center;
-    padding-top: 8%;
-}
-.loadImage>form{
-    width: 50%;
-    margin: 0 auto;
-    background: #fff;
-}
-.loadImage>form>label{
-    text-transform: uppercase;
-    font-size: 2em;
-}
-.loadImage>.closes>img{
-    cursor: pointer;
-    width: 3%;
-    margin: 1%;
-}
 
-.loadImage>.closes{
-    width: 50%;
-    margin: 0 auto;
-    text-align: right;
-    background: #fff;
-}
 .changeAvatar{
     display: none;
     position: fixed;
@@ -268,37 +415,7 @@ div.all-about-user{float: left;}
     text-align: right;
     background: #fff;
 }
-.loadFile{
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.45);
-    text-align: center;
-    padding-top: 8%;
-}
-.loadFile>form{
-    width: 50%;
-    margin: 0 auto;
-    background: #fff;
-}
-.loadFile>form>label{
-    text-transform: uppercase;
-    font-size: 2em;
-}
-.loadFile>.closes>img{
-    cursor: pointer;
-    width: 3%;
-    margin: 1%;
-}
 
-.loadFile>.closes{
-    width: 50%;
-    margin: 0 auto;
-    text-align: right;
-    background: #fff;
-}
 
 #avatar{
     width: 100%;
@@ -394,13 +511,5 @@ a#addFile>img:hover{opacity: 0.7;}
     text-align: center;
     border-bottom: 2px solid;
 }
-.menu>ul{
-    display: flex;
-    justify-content:center;
-}
-.menu>ul>li>a{padding: 0 15px;}
-.menu>ul>li:hover{background: blue;}
-.menu>ul>li:hover a{color: #fff;text-decoration: none;}
-.menu>ul>li.active{background: red;}
 
 .add-page{padding-bottom: 4%;}

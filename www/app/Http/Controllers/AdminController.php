@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
-use App\User;
-use App\Role;
+use App\Model\Page;
+use App\Model\Article;
+use App\Model\User;
+use App\Model\Role;
+use App\Model\File as FilesTable;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
@@ -13,12 +15,28 @@ class AdminController extends Controller
 {
     public function admin()
     {
-        return view('admin');
+        $name = "Панель Администратора";
+        return view('admin')->with(['name'=>$name]);
     }
 
-    public function content()
+    public function viewPages(){
+        $name = "Список страниц";
+        $page = (new Page)->select([
+            'id',
+            'name',
+            'author',
+            'content',
+            'link',
+        ]);
+        return view('admin-pages')->with([
+            'page'=>$page,
+            'name'=>$name,
+        ]);
+    }
+    public function viewArticles()
     {
-        $post = (new Post)
+        $name = "Список статей";
+        $post = (new Article)
             ->select([
                 'id',
                 'name',
@@ -26,35 +44,42 @@ class AdminController extends Controller
                 'description',
                 'content'
             ])->orderBy('id', 'desc')->paginate(10);
-        return view('admin-content')->with(['post' => $post]);
+        return view('admin-articles')->with(['post' => $post,'name'=>$name]);
     }
 
-    public function users()
+    public function viewUsers()
     {
+        $name = "Список пользователей";
         $user = (new User)
             ->select([
                 'id',
                 'name',
-<<<<<<< HEAD
                 'email'])->orderBy('id', 'desc')->paginate(10);
-
-        return view('admin-user')->with(['user'=>$user]);
-=======
-                'email'
-            ])->orderBy('id', 'desc')->paginate(10);
-        return view('admin-user')->with(['user' => $user]);
->>>>>>> b117561fcc059e302b03c38ea8f6b7cade0dcedc
+        return view('admin-user')->with([
+            'user'=>$user,
+            'name'=>$name,
+            ]);
     }
-    public function multimedia(){
+    public function viewMultimedia(){
+        $name = "Мультимедиа";
         $files = Storage::allFiles('files/all-multimedia');
-        return view('admin-multimedia')->with(['files'=>$files]);
+        return view('admin-multimedia')->with([
+            'files'=>$files,
+            'name'=>$name,
+            ]);
     }
-    public function addMultimedia(Request $request){
-        $request->file('image')->store('files/all-multimedia');
-        return redirect("admin-multimedia");
-    }
-    public function deleteIMG($file){
-        Storage::delete($file);
-        return redirect("admin-multimedia");
+    public function viewFiles(){
+        $name = "Файлы";
+        $files = (new FilesTable)->select([
+            'id',
+            'name',
+            'mimetype',
+            'link',
+        ])->get();
+        return view('admin-files')
+            ->with([
+                'files'=>$files,
+                'name'=>$name,
+                ]);
     }
 }

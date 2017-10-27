@@ -1,7 +1,7 @@
 <?php
 
-use App\Post;
-use App\User;
+use App\Model\Article;
+use App\Model\User;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -31,7 +31,7 @@ class CMSDB extends Migration
             $table->string('author');
             $table->timestamps();
         });
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('author_name');
@@ -44,7 +44,7 @@ class CMSDB extends Migration
         });
         $faker = Faker\Factory::create();
         for ($i=0; $i < 10; $i++) {
-            ((new Post)->fill([
+            ((new Article)->fill([
                 'name'=>$faker->name,
                 'author_name'=>'SuperAdmin',
                 'author_id'=>1,
