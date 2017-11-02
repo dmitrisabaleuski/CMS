@@ -1,11 +1,11 @@
             /*ADD MULTIMEDIA*/
-$('#add').on('click', function(){
+/*$('#add').on('click', function(){
     event.preventDefault();
     $('.loadImage').css('display','block');
 })
 $('#close').on('click',function(){
     $('.loadImage').css('display','none');
-});
+});*/
 
             /*ADD FILE*/
 $('#addFile').on('click', function(){

@@ -162,11 +162,50 @@ a#addFile>img:hover{opacity: 0.7;}
 div.add-file>p{
     margin-bottom: 0;
 }
+.file-inside{padding: 0 !important;}
+        /*** ADMIN ARCHIVES***/
+div.add-archive{
+    text-align: right;
+    background: rgba(84, 245, 74, 0.27) !important;
+    display: flex !important;
+    justify-content: flex-end;
+    padding: 1% !important;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+a#addFile>img{width:25%;}
+a#addFile>img:hover{opacity: 0.7;}
+div.add-archive>p{
+    margin-bottom: 0;
+}
+.archive-inside{padding: 0 !important;}
+.admin-archive .archive-inside img{
+    width:100%;
+}
+.archive-options>p{
+    margin-bottom: 0;
+}
+.archive-options{
+    position: absolute;
+    top: 0%;
+    background: rgba(91, 123, 171, 0.52) !important;
+    border: none !important;
+    width: 100%;
+    height: 100%;
+    display: none !important;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0 !important;
+    transition: 3s;
+}
+.archives>.archive>.archive-inside:hover .archive-options{
+    display: flex !important;
+    transition: 3s;
+}
 
 /***** ACCAUNT *****/
 .loadFile,
-.loadAvatar,
-.loadImage{
+.loadAvatar{
     display: none;
     position: fixed;
     z-index: 9999;
@@ -177,36 +216,103 @@ div.add-file>p{
     padding-top: 8%;
 }
 .loadFile>form,
-.loadAvatar>form,
-.loadImage>form{
+.loadAvatar>form{
     width: 50%;
     margin: 0 auto;
     background: #fff;
 }
 .loadFile>form>label,
-.loadAvatar>form>label,
-.loadImage>form>label{
+.loadAvatar>form>label{
     text-transform: uppercase;
     font-size: 2em;
 }
 .loadFile>.closes>img,
-.loadAvatar>.closes>img,
-.loadImage>.closes>img{
+.loadAvatar>.closes>img{
     cursor: pointer;
     width: 3%;
     margin: 1%;
 }
 .loadFile>.closes,
-.loadAvatar>.closes,
-.loadImage>.closes{
+.loadAvatar>.closes{
     width: 50%;
     margin: 0 auto;
     text-align: right;
     background: #fff;
 }
+#content .imagesbyuser, #content .archivesbyuser, #content .filesbyuser{float:left;}
+#content .tableName{
+    font-size: 2em;
+    font-weight: bold;
+}
+#content .emptyTable{color:red;}
 
+        /*** images by user ***/
+#content .imagesbyuser>.image{float: left;}
+#content .imagesbyuser>.image>img{width:100%;}
+#content .imagesbyuser>.image{padding: 0 !important;}
+#content .imagesbyuser>.image>p{margin-bottom: 0;}
+#content .imagesbyuser>.image .image-options{
+    position: absolute;
+    top: 0%;
+    background: rgba(91, 123, 171, 0.52) !important;
+    border: none !important;
+    width: 100%;
+    height: 100%;
+    display: none !important;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0 !important;
+    transition: 3s;
+}
+#content .imagesbyuser>.image:hover .image-options{
+    display: flex !important;
+    transition: 3s;
+}
 
-
+        /*** archives by user ***/
+#content .archivesbyuser>.archive>.archive-inside{float: left;}
+#content .archivesbyuser>.archive>.archive-inside>img{width:100%;}
+#content .archivesbyuser>.archive>.archive-inside{padding: 0 !important;}
+#content .archivesbyuser>.archive>.archive-inside>p{margin-bottom: 0;}
+#content .archivesbyuser>.archive>.archive-inside .archive-options{
+    position: absolute;
+    top: 0%;
+    background: rgba(91, 123, 171, 0.52) !important;
+    border: none !important;
+    width: 100%;
+    height: 100%;
+    display: none !important;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0 !important;
+    transition: 3s;
+}
+#content .archivesbyuser>.archive>.archive-inside:hover .archive-options{
+    display: flex !important;
+    transition: 3s;
+}
+        /*** filess by user ***/
+#content .filesbyuser>.file>.file-inside{float: left;}
+#content .filesbyuser>.file>.file-inside>img{width:100%;}
+#content .filesbyuser>.file>.file-inside{padding: 0 !important;}
+#content .filesbyuser>.file>.file-inside>p{margin-bottom: 0;}
+#content .filesbyuser>.file>.file-inside .file-options{
+    position: absolute;
+    top: 0%;
+    background: rgba(91, 123, 171, 0.52) !important;
+    border: none !important;
+    width: 100%;
+    height: 100%;
+    display: none !important;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0 !important;
+    transition: 3s;
+}
+#content .filesbyuser>.file>.file-inside:hover .file-options{
+    display: flex !important;
+    transition: 3s;
+}
 
 
 .add-post,.admin-content,.content>div{border: 1px solid #000;float: left}

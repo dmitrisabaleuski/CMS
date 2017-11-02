@@ -8,6 +8,8 @@ use App\Model\Article;
 use App\Model\User;
 use App\Model\Role;
 use App\Model\File as FilesTable;
+use App\Model\Image as ImageTable;
+use App\Model\Archive as ArchiveTable;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
@@ -62,7 +64,12 @@ class AdminController extends Controller
     }
     public function viewMultimedia(){
         $name = "Мультимедиа";
-        $files = Storage::allFiles('files/all-multimedia');
+        $files = (new ImageTable)->select([
+            'id',
+            'name',
+            'mimetype',
+            'link',
+        ])->get();
         return view('admin-multimedia')->with([
             'files'=>$files,
             'name'=>$name,
@@ -81,5 +88,18 @@ class AdminController extends Controller
                 'files'=>$files,
                 'name'=>$name,
                 ]);
+    }
+    public function viewArchives(){
+        $name = "Архивы";
+        $files = (new ArchiveTable)->select([
+            'id',
+            'name',
+            'mimetype',
+            'link',
+        ])->get();
+        return view('admin-archives')->with([
+            'archives'=>$files,
+            'name'=>$name,
+        ]);
     }
 }

@@ -18,6 +18,23 @@ class FilesDates extends Migration
             $table->string('name');
             $table->string('mimetype');
             $table->string('link');
+            $table->integer('user_id');
+            $table->timestamps();
+        });
+        Schema::create('archives', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('mimetype');
+            $table->string('link');
+            $table->integer('user_id');
+            $table->timestamps();
+        });
+        Schema::create('images', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('mimetype');
+            $table->string('link');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

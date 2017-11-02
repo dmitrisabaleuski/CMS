@@ -26,6 +26,7 @@ Route::get('/admin-articles','AdminController@viewArticles');
 Route::get('/admin-user','AdminController@viewUsers');
 Route::get('/admin-multimedia','AdminController@viewMultimedia');
 Route::get('/admin-files','AdminController@viewFiles');
+Route::get('/admin-archives','AdminController@viewArchives');
 
 
 /***** USERS *****/
@@ -67,20 +68,25 @@ Route::get('/about', 'PageController@about');
 Route::get('/contact', 'PageController@contact');
 
 /***** MULTIMEDIA *****/
-Route::post('/admin-multimedia/add','MultimediaController@addMultimedia')->name('addMultimedia');
-Route::get('admin-multimedia/delete','MultimediaController@deleteMultimedia')->name('deleteMultimedia');
+Route::get('admin-multimedia/delete/{imageId}','MultimediaController@deleteMultimedia')->name('deleteMultimedia');
+Route::get('admin/multimediadelete/{imageId}-{id}','MultimediaController@deleteMultimediaInAccaunt')->name('deleteMultimediaInAccaunt');
 
 /***** FILES *****/
-Route::post('/admin-files/add','FileController@addNewFile')->name('addFile');
+Route::post('addFile','FileController@addNewFile')->name('addFile');
 Route::get('/admin-files/delete/{fileid}','FileController@deleteFile')->name('deleteFile');
+Route::get('admin/filedelete/{fileid}-{id}','FileController@deleteFileInAccaunt')->name('deleteFileInAccaunt');
+
+/***** ARCHIVES *****/
+Route::get('admin-archives/delete/{archiveId}','ArchiveController@deleteArchive')->name('deleteArchive');
+Route::get('admin/archivedelete/{archiveId}-{id}','ArchiveController@deleteArchiveInAccaunt')->name('deleteArchiveInAccaunt');
 
 /***** USERS AUTHORIZATION *****/
 Auth::routes();
 // Маршруты аутентификации...
-Route::get('auth/login', 'Auth\LoginController@showLoginForm');
+Route::get('auth/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('auth/login', 'Auth\LoginController@login');
-Route::get('auth/logout', 'Auth\LoginController@logout');
+Route::get('auth/logout', 'Auth\LoginController@logout')->name('logout');
 
 // Маршруты регистрации...
-Route::get('auth/register', 'Auth\RegisterController@showRegistrationForm');
+Route::get('auth/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('auth/register', 'Auth\RegisterController@register');

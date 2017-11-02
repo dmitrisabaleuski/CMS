@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers;
 use Storage;
+use App\Model\User;
+use App\Model\Image as ImageTable;
 use Illuminate\Http\Request;
 
 class MultimediaController extends Controller
 {
-    public function addMultimedia(Request $request){
-        $request->file('image')->store('files/all-multimedia');
+    public function deleteMultimedia($fileid){
+        $file = (new ImageTable)->find($fileid);
+        $deletefile = $file->link;
+        Storage::delete($deletefile);
+        $file->delete();
         return redirect("admin-multimedia");
+
     }
-    public function deleteMultimedia($file){
-       /* Storage::delete($file);
-        return redirect("admin-multimedia");
-        */
+    public function deleteMultimediaInAccaunt($fileid,$id){
+        $file = (new ImageTable)->find($fileid);
+        $deletefile = $file->link;
+        Storage::delete($deletefile);
+        $file->delete();
+        return redirect("admin/user-$id");
     }
 }

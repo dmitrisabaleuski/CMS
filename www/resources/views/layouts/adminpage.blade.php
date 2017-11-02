@@ -74,6 +74,7 @@ use App\Model\User;
             @endrole
             <li><a href="/admin-multimedia">Мультимедиа</a></li>
             <li><a href="/admin-files">Файлы</a></li>
+            <li><a href="/admin-archives">Архивы</a></li>
         </ul>
     </div>
 
@@ -99,28 +100,6 @@ use App\Model\User;
                 <input id="ava" type="file" class="form-control" name="avatar" required>
 
                 @if ($errors->has('avatar'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('avatar') }}</strong>
-                    </span>
-                @endif
-            </div>
-        </div>
-        <button type="submit" class="btn btn-default">Отправить</button>
-        {{csrf_field()}}
-    </form>
-</div>
-<div class="loadImage">
-    <div class="closes">
-        <img id="close" src="../delete.png" alt="close">
-    </div>
-    <form method="POST" enctype = "multipart/form-data" action="{{route('addMultimedia')}}">
-        <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
-            <label for="image" class="col-md-4 control-label">Upload Image</label>
-
-            <div class="col-md-6">
-                <input id="image" type="file" class="form-control" name="image" required>
-
-                @if ($errors->has('image'))
                     <span class="help-block">
                         <strong>{{ $errors->first('avatar') }}</strong>
                     </span>
