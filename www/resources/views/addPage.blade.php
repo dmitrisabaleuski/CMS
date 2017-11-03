@@ -14,6 +14,10 @@
                         <input type="text" class="form-control" id="shortDisc" name="author" value="{{Auth::user()->name}}" readonly>
                     </div>
                     <div class="form-group">
+                        <label for="shortDisc">Как пункт меню</label>
+                        <input type="checkbox" class="form-control" id="menuCheck" name="menu">
+                    </div>
+                    <div class="form-group">
                         <label for="foolCont">Полный текст</label>
                         <textarea type="text" class="form-control" id="foolCont" name="contents"></textarea>
                     </div>

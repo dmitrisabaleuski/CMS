@@ -55,6 +55,15 @@ div.content>article{
     margin-top: 25px;
 }
 
+/***** SINGLE NIGHT *****/
+.content-page{
+    float: left;
+    padding: 10px 25px 10px 25px;
+}
+.singl-page{
+    text-align: left !important;
+}
+
 /****** SINGLE POST ******/
 p.backtomain{
     background: #383737;
@@ -89,11 +98,38 @@ div.add-page{
     margin-top: 15px;
 
 }
+div.add-page form{text-align: left;}
+div.add-page form #menuCheck{width:1%;}
 a#addPage>img{width:25%;}
 a#addPage>img:hover{opacity: 0.7;}
 div.add-page>p{
     margin-bottom: 0;
 }
+.admin-pages>ul{
+    width:100%;
+    margin-bottom: 0;
+    padding-left: 0px;
+}
+.admin-pages>ul>li>.page-admin>ul,
+.admin-pages>ul>li>.page-admin>ul>li{
+    float: left;
+}
+.admin-pages>ul>li>{border: 1px solid}
+.admin-pages>ul>li>.page-admin>ul>li{border: 1px solid}
+.page-atribut{float: left;padding: 5px;}
+.page-admin,.admin-pages>ul>li>ul{float: left;}
+.admin-pages>ul>li>ul>li{
+    float: left;
+    padding: 2px;
+    border:1px solid;
+}
+ul{list-style-type: none;}
+.admin-pages>ul>li{border-bottom: 1px solid;display: flex;}
+.admin-pages>ul>li:last-child{border:none;}
+.page-admin{padding-left: 0px !important;}
+.page-admin>div{float: left;}
+.admin-pages{border:none;}
+.admin-pages>ul>li>ul{display: flex; align-items: center;}
 
         /*** ADMIN POSTS***/
 div.add-article {
@@ -110,6 +146,37 @@ a#addArticle>img{width:25%;}
 a#addArticle>img:hover{opacity: 0.7;}
 div.add-article>p{
     margin-bottom: 0;
+}
+.admin-content>ul{
+    width:100%;
+    margin-bottom: 0;
+    padding-left: 0px;
+}
+.admin-content>ul>li>.post-admin>ul,.admin-content>ul>li>.post-admin>ul>li{
+    float: left;
+}
+.admin-content>ul>li>{border: 1px solid}
+.admin-content>ul>li>.post-admin>ul>li{border: 1px solid}
+.post-atribut{float: left;padding: 5px;}
+.post-admin,.admin-content>ul>li>ul{float: left;}
+.admin-content>ul>li>ul>li{
+    float: left;
+    padding: 2px;
+    border:1px solid;
+}
+ul{list-style-type: none;}
+.admin-content>ul>li{border-bottom: 1px solid;display: flex;}
+.admin-content>ul>li:last-child{border:none;}
+.post-admin{padding-left: 0px !important;}
+.post-admin>div{float: left;}
+.admin-content{border:none;}
+.admin-content>ul>li>ul{display: flex; align-items: center;}
+
+.partOf>li{border:none !important;}
+.partOfMenu{
+    color:red;
+    margin-bottom: 0;
+    font-weight: bold;
 }
 
 /****** ADD POSTS******/
@@ -334,30 +401,7 @@ div.content{
 }
 
 div h1{margin-bottom: 0;}
-.admin-content>ul{
-    width:100%;
-    margin-bottom: 0;
-    padding-left: 0px;
-}
-.admin-content>ul>li>.post-admin>ul,.admin-content>ul>li>.post-admin>ul>li{
-    float: left;
-}
-.admin-content>ul>li>{border: 1px solid}
-.admin-content>ul>li>.post-admin>ul>li{border: 1px solid}
-.post-atribut{float: left;padding: 5px;}
-.post-admin,.admin-content>ul>li>ul{float: left;}
-.admin-content>ul>li>ul>li{
-    float: left;
-    padding: 2px;
-    border:1px solid;
-}
-ul{list-style-type: none;}
-.admin-content>ul>li{border-bottom: 1px solid;display: flex;}
-.admin-content>ul>li:last-child{border:none;}
-.post-admin{padding-left: 0px !important;}
-.post-admin>div{float: left;}
-.admin-content{border:none;}
-.admin-content>ul>li>ul{display: flex; align-items: center;}
+
 .main:hover{
     transform: 1.5s;
     background: #880000;

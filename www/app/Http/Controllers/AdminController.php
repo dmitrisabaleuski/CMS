@@ -29,7 +29,8 @@ class AdminController extends Controller
             'author',
             'content',
             'link',
-        ]);
+            'active_menu',
+        ])->get();
         return view('admin-pages')->with([
             'page'=>$page,
             'name'=>$name,

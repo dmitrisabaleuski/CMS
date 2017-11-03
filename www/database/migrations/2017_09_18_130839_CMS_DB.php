@@ -20,7 +20,7 @@ class CMSDB extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('url');
-            $table->integer('parent_id');
+            $table->integer('active_id');
             $table->timestamps();
         });
         Schema::create('pages', function (Blueprint $table) {
@@ -29,6 +29,7 @@ class CMSDB extends Migration
             $table->string('content');
             $table->string('link');
             $table->string('author');
+            $table->integer('active_menu');
             $table->timestamps();
         });
         Schema::create('articles', function (Blueprint $table) {

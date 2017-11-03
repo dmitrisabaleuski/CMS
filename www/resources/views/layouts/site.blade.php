@@ -18,7 +18,20 @@ use App\Model\User;
 <body>
 <header class="col-xl-12 col-md-12 col-sm-12">
     <div class="col-xl-12 col-md-12 col-sm-12 menu">
-        {!! $MyNavBar->asUl() !!}
+        <ul>
+            <li>
+                <a href="/">Главная</a>
+            </li>
+            @if(count($menu))
+                @foreach($menu as $menus)
+                    <li>
+                        <a href="{{route('pageShow',['id'=>$menus->active_id])}}">{{$menus->title}}</a>
+                    </li>
+                @endforeach
+            @else
+
+            @endif
+        </ul>
     </div>
     <div class="title col-xl-6 col-md-6 col-sm-12">
         <h1>{{$name}}</h1>

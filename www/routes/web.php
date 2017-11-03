@@ -57,12 +57,15 @@ Route::post('article/edit/{id}','ArticleController@articleUpdate')->name('articl
 
 /***** PAGE *****/
 Route::get('/addPage','PageController@addPage');
-Route::post('/addPage','PageController@savePage')->name('savePage');;
+Route::post('/addPage','PageController@savePage')->name('savePage');
+Route::get('/editPage/{id}','PageController@editPage')->name('editPage');
+Route::post('/editPage/{id}', 'PageController@updatePage')->name('pageUpdate');
 Route::delete('admin-pages/delete/{page}',function($page){
     $page_tmp = App\Model\Page::where('id',$page)->first();
     $page_tmp->delete();
-    return redirect('/');
+    return redirect('admin-pages');
 })->name('pageDelete');
+Route::get('page-{id}','PageController@pageShow')->name('pageShow');
 
 Route::get('/about', 'PageController@about');
 Route::get('/contact', 'PageController@contact');

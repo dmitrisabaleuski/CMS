@@ -10,7 +10,7 @@
                     <div class="post-admin col-xl-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
                             <p class="post-atribut"> Название статьи: <b> {{$posts->name}} </b></p>
-                            <p class="post-atribut"> Автор: <b> {{$posts->author}} </b></p>
+                            <p class="post-atribut"> Автор: <b> {{$posts->author_name}} </b></p>
                         </div>
                         <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
                             <p> Содержание: <b> {{$posts->content}}</b></p>

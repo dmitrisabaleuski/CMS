@@ -7,8 +7,8 @@
                     <h2>{{$post->name}}</h2>
                     <p class="article-content">{{$post->content}}</p>
                     <p class="article-author">Автор: <span>{{$post->author_name}}</span></p>
-                    @role('admin')
-                    <p><a class="btn btn-default edpost" role="buttom" href="{{route('editShow',['id'=>$post->id])}}">Редактировать</a></p>
+                    @role(['SuperAdmin','Admin'])
+                    <p><a class="btn btn-default edpost" role="buttom" href="{{route('articleEdit',['id'=>$post->id])}}">Редактировать</a></p>
                     @endrole
                 </div>
         @endif
