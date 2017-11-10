@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\UserModels;
 use Illuminate\Http\Request;
 use App\Model\User;
 use App\Model\Article;
@@ -9,55 +10,21 @@ use App\Model\Image as ImageTable;
 use App\Model\Archive as ArchiveTable;
 use App\Model\File as FilesTable;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
 
 class AccountController extends Controller
 {
     public function account($id)
     {
-        $user = (new User)->select([
-            'id',
-            'name',
-            'email',
-            'avatar',
-        ])->where('id', $id)->first();
-        $post = (new Article)->select([
-            'id',
-            'name',
-            'author_name',
-            'description',
-            'date',
-            'content',
-        ])->where('author_id',
-            $id)->orderBy('id', 'desc')->paginate(5);
-        $archive = (new ArchiveTable)->select([
-            'id',
-            'name',
-            'mimetype',
-            'link',
-            'user_id',
-            ])->where('user_id','=',$id)->get();
-        $images = (new ImageTable)->select([
-            'id',
-            'name',
-            'mimetype',
-            'link',
-            'user_id',
-        ])->where('user_id','=',$id)->get();
-        $files = (new FilesTable)->select([
-            'id',
-            'name',
-            'mimetype',
-            'link',
-            'user_id',
-        ])->where('user_id','=',$id)->get();
+        $user = (new User)->select()->where('id', $id)->first();
+        $service = new UserModels($id);
+
         return view('account')->with([
-            'user' => $user,
-            'post' => $post,
-            'name'=> $user->name,
-            'archives'=>$archive,
-            'images'=>$images,
-            'files'=>$files,
+            'user' => (new User)->select()->where('id', $id)->first(),
+            'post' => (new Article)->select()->where('author_id', $id)->orderBy('id', 'desc')->paginate(5),
+            'name' => $user->name,
+            'archives'=> $service->get(ArchiveTable::class),
+            'images'=> $service->get(ImageTable::class),
+            'files'=> $service->get(FilesTable::class),
         ]);
     }
 
@@ -68,7 +35,7 @@ class AccountController extends Controller
             'name',
             'email',
         ])->where('id', $id)->first();
-        $name = "Редактирование аккаунта ". $user->name;
+        $name = "Редактирование аккаунта {$user->name}";
         return view('accountEdit')->with([
             'user' => $user,
             'name'=> $name,
