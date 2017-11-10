@@ -13,12 +13,12 @@ class MainPageController extends Controller
             'name',
             'author_name',
             'description',
-        ])->orderBy('id', 'desc')->paginate(5);
+        ])->where('view_on_main','=','1')->orderBy('id', 'desc')->paginate(5);
         $menu = (new Menu)->select([
             'title',
             'url',
             'active_id',
-        ])->get();
+        ])->where('active','=','1')->get();
         $name = "Main Page";
         return view('mainPage')->with([
             'post'=>$post,
@@ -37,7 +37,7 @@ class MainPageController extends Controller
             'title',
             'url',
             'active_id',
-        ])->get();
+        ])->where('active','=','1')->get();
         $name = $post->name;
         return view('post-content')
             ->with([

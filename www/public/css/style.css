@@ -269,6 +269,43 @@ div.add-archive>p{
     display: flex !important;
     transition: 3s;
 }
+        /*** ADMIN MENU***/
+div.add-menu{
+    text-align: right;
+    background: rgba(84, 245, 74, 0.27) !important;
+    display: flex !important;
+    justify-content: flex-end;
+    padding: 1% !important;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+a#addMenu>img{width:25%;}
+a#addMenu>img:hover{opacity: 0.7;}
+div.add-menu>p{
+    margin-bottom: 0;
+}
+.admin-menu>ul{
+    width: 100%;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+.admin-menu>ul>li{
+    background: #ececec;
+    border-bottom: 3px solid #fff;
+}
+.admin-menu>ul>li:first-child{
+    border-radius: 15px 15px 0 0;
+}
+.admin-menu>ul>li:last-child{
+    border-radius: 0 0 15px 15px;
+    border:none !important;
+}
+.admin-menu>ul>li>.menu-admin>p{
+    margin-bottom: 0;
+    float: none !important;
+}
+.page-active{color:green;}
+.page-noactive{color:red;}
 
 /***** ACCAUNT *****/
 .loadFile,
@@ -663,3 +700,4 @@ a#addFile>img:hover{opacity: 0.7;}
 }
 
 .add-page{padding-bottom: 4%;}
+select{display: block;}

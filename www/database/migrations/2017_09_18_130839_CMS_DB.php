@@ -2,6 +2,7 @@
 
 use App\Model\Article;
 use App\Model\User;
+use App\Model\Menu;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -21,6 +22,7 @@ class CMSDB extends Migration
             $table->string('title');
             $table->string('url');
             $table->integer('active_id');
+            $table->integer('active');
             $table->timestamps();
         });
         Schema::create('pages', function (Blueprint $table) {
@@ -41,6 +43,8 @@ class CMSDB extends Migration
             $table->string('description');
             $table->string('content');
             $table->string('title');
+            $table->string('view_on_main');
+            $table->string('parent_page');
             $table->timestamps();
         });
         $faker = Faker\Factory::create();
@@ -52,9 +56,19 @@ class CMSDB extends Migration
                 'description'=>$faker->text($maxNbChars = 50),
                 'content'=>$faker->text($maxNbChars = 200),
                 'title'=>$faker->name,
+                'view_on_main'=>'1',
+                'parent_page'=>'',
             ])->save());
 
         }
+        $menu = new Menu;
+        $menu->fill([
+            'title'=>'Главная',
+            'url'=>'/',
+            'active_id'=>1,
+            'active'=>1,
+        ]);
+        $menu->save();
 
     }
 

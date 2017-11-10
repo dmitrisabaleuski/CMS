@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Model\Page;
 use App\Model\Article;
 use App\Model\User;
+use App\Model\Menu;
 use App\Model\Role;
 use App\Model\File as FilesTable;
 use App\Model\Image as ImageTable;
@@ -45,7 +46,8 @@ class AdminController extends Controller
                 'name',
                 'author_name',
                 'description',
-                'content'
+                'content',
+                'view_on_main',
             ])->orderBy('id', 'desc')->paginate(10);
         return view('admin-articles')->with(['post' => $post,'name'=>$name]);
     }
@@ -100,6 +102,20 @@ class AdminController extends Controller
         ])->get();
         return view('admin-archives')->with([
             'archives'=>$files,
+            'name'=>$name,
+        ]);
+    }
+    public function viewMenu(){
+        $name = "Список меню";
+        $menu = (new Menu)->select([
+            'id',
+            'title',
+            'url',
+            'active_id',
+            'active',
+        ])->get();
+        return view('admin-menu')->with([
+            'menu'=>$menu,
             'name'=>$name,
         ]);
     }

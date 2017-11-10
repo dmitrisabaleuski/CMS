@@ -4,6 +4,17 @@
         <div class="container">
             <div class="form">
                 <form method="POST" action="{{route('articleSave',['id'=>Auth::user()->id])}}">
+                    @if(count($page))
+                    <div class="form-group">
+                        <label for="hero">Прикрепить к странице(цам)</label>
+                        <select size="3" multiple name="hero[]">
+                            <option disabled>Выберите страницу(цы)</option>
+                            @foreach($page as $pag)
+                                <option value="{{$pag->id}}">{{$pag->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @endif
                     <div class="form-group">
                         <label for="title">Название</label>
                         <input type="text" class="form-control" id="title" name="name">

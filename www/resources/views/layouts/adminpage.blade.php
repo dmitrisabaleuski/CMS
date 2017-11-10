@@ -75,6 +75,7 @@ use App\Model\User;
             <li><a href="/admin-multimedia">Мультимедиа</a></li>
             <li><a href="/admin-files">Файлы</a></li>
             <li><a href="/admin-archives">Архивы</a></li>
+            <li><a href="/admin-menu">Меню</a></li>
         </ul>
     </div>
 

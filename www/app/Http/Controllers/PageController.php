@@ -9,25 +9,25 @@ use function Psy\bin;
 
 class PageController extends Controller
 {
-    public function pageShow($id){
+    public function pageShow($pageUrl){
         $page = (new Page)->select([
-            'id',
-            'name',
-            'content',
-            'author',
-        ])->where('id',$id)->first();
-        $name = $page->name;
-        $menu = (new Menu)->select([
-            'title',
-            'url',
-            'active_id',
-        ])->get();
-        return view('content-page')
-            ->with([
-                'page'=>$page,
-                'name'=>$name,
-                'menu'=>$menu,
-            ]);
+           'id',
+           'name',
+           'content',
+           'author',
+       ])->where('link','=',"/$pageUrl")->first();
+       $name = $page->name;
+       $menu = (new Menu)->select([
+           'title',
+           'url',
+           'active_id',
+       ])->where('active','=','1')->get();
+       return view('content-page')
+           ->with([
+               'page'=>$page,
+               'name'=>$name,
+               'menu'=>$menu,
+           ]);
     }
     public function addPage(){
         $name = "New Page";
@@ -92,8 +92,10 @@ class PageController extends Controller
             $mark = 0;
         }
         if($mark == $post->active_menu){
+            $pageNewName = str_replace(' ', '_', $request->name);
             $post->fill([
                 'name'=>"$request->name",
+                'link'=>"/$pageNewName",
                 'content'=>"$request->contents",
             ]);
             $post->update();
@@ -101,8 +103,10 @@ class PageController extends Controller
         }else{
             if($post->active_menu == 1){
                 $menu = (new Menu)->where('active_id', '=', "$id")->first();
+                $pageNewName = str_replace(' ', '_', $request->name);
                 $post->fill([
                     'name'=>"$request->name",
+                    'link'=>"/$pageNewName",
                     'content'=>"$request->contents",
                     'active_menu'=>0,
                 ]);
@@ -111,13 +115,15 @@ class PageController extends Controller
                 return redirect('admin-pages')->with(['name'=>$name]);
             }
             elseif($post->active_menu == 0){
+                $pageNewName = str_replace(' ', '_', $request->name);
                 $post->fill([
                     'name'=>"$request->name",
+                    'link'=>"/$pageNewName",
                     'content'=>"$request->contents",
                     'active_menu'=>1,
                 ]);
                 $post->update();
-                $pageName = $post->name;
+                $pageName = $pageNewName;
                 return PageController::savePageInMenu($pageName);
             }
         }
@@ -134,30 +140,9 @@ class PageController extends Controller
             'title'=>"$pageId->name",
             'url'=>"$pageId->link",
             'active_id'=>"$pageId->id",
+            'active'=>1,
         ]);
         $addInMenuTable->save();
         return redirect('admin-pages')->with(['name'=>$name]);
     }
-    /*public function about(){
-        $page = (new Page)->select([
-            'id',
-            'name',
-            'author',
-            'description',
-        ]);
-        $name = "About";
-        return view('content-page')
-            ->with(['page'=>$page,'name'=>$name]);
-    }
-    public function contact(){
-        $page = (new Page)->select([
-            'id',
-            'name',
-            'author',
-            'description',
-        ]);
-        $name = "Contact";
-        return view('content-page')
-            ->with(['page'=>$page,'name'=>$name]);
-    }*/
 }

@@ -19,13 +19,10 @@ use App\Model\User;
 <header class="col-xl-12 col-md-12 col-sm-12">
     <div class="col-xl-12 col-md-12 col-sm-12 menu">
         <ul>
-            <li>
-                <a href="/">Главная</a>
-            </li>
             @if(count($menu))
                 @foreach($menu as $menus)
                     <li>
-                        <a href="{{route('pageShow',['id'=>$menus->active_id])}}">{{$menus->title}}</a>
+                        <a href="{{route('pageShow',['pageUrl'=>$menus->url])}}">{{$menus->title}}</a>
                     </li>
                 @endforeach
             @else

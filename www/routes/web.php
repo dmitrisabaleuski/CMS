@@ -27,6 +27,7 @@ Route::get('/admin-user','AdminController@viewUsers');
 Route::get('/admin-multimedia','AdminController@viewMultimedia');
 Route::get('/admin-files','AdminController@viewFiles');
 Route::get('/admin-archives','AdminController@viewArchives');
+Route::get('/admin-menu','AdminController@viewMenu');
 
 
 /***** USERS *****/
@@ -63,12 +64,11 @@ Route::post('/editPage/{id}', 'PageController@updatePage')->name('pageUpdate');
 Route::delete('admin-pages/delete/{page}',function($page){
     $page_tmp = App\Model\Page::where('id',$page)->first();
     $page_tmp->delete();
+    $menu = App\Model\Menu::where('active_id',$page)->first();
+    $menu->delete();
     return redirect('admin-pages');
 })->name('pageDelete');
-Route::get('page-{id}','PageController@pageShow')->name('pageShow');
-
-Route::get('/about', 'PageController@about');
-Route::get('/contact', 'PageController@contact');
+Route::get('{pageUrl}','PageController@pageShow')->name('pageShow');
 
 /***** MULTIMEDIA *****/
 Route::get('admin-multimedia/delete/{imageId}','MultimediaController@deleteMultimedia')->name('deleteMultimedia');
@@ -93,3 +93,19 @@ Route::get('auth/logout', 'Auth\LoginController@logout')->name('logout');
 // Маршруты регистрации...
 Route::get('auth/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('auth/register', 'Auth\RegisterController@register');
+
+/***** MENU *****/
+Route::get('menu/status-{id}', 'MenuController@changeStatus')->name('changeStatus');
+Route::get('menu/name-{id}', 'MenuController@changeName')->name('changeName');
+Route::post('menu/name-{id}', 'MenuController@updateName')->name('menuUpdate');
+Route::get('menu/delete-{id}',function($menuId){
+    $menu = App\Model\Menu::where('id',$menuId)->first();
+    $menuId = $menu->active_id;
+    $pageActive = App\Model\Page::find($menuId);
+    $pageActive->fill([
+        'active_menu'=>'0',
+    ]);
+    $menu->delete();
+    $pageActive->update();
+    return redirect('admin-menu');
+})->name('deleteMenu');

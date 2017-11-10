@@ -14,12 +14,12 @@
                                 <p class="page-atribut"> Автор: <b> {{$pages->author}} </b></p>
                             </div>
                             <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
-                                <p> Содержание: <b> {{$pages->content}}</b></p>
+                                <p> Содержание: <b> {!!$pages->content!!}</b></p>
                             </div>
                         </div>
                         <ul>
                             <li><a class="btn btn-default edpage" role="buttom" href="{{route('editPage',['id'=>$pages->id])}}">Редактировать</a></li>
-                            <li><a class="btn btn-default main" role="buttom" href="{{route('pageShow',['id'=>$pages->id])}}">Просмотреть</a></li>
+                            <li><a class="btn btn-default main" role="buttom" href="{{route('pageShow',['pageUrl'=>$pages->link])}}">Просмотреть</a></li>
                             <li>
                                 <form action="{{route('pageDelete',['page'=>$pages->id])}}" method="POST">
                                     <input type="hidden" name="_method" value="DELETE">
